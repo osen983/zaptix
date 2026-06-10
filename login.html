@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAPTIX — تسجيل الدخول</title>
+<!-- لا يظهر هذا الرابط في التنقل — صفحة مخفية للمسؤول فقط -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── صفحة تسجيل الدخول ── */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* خلفية الشبكة المضيئة */
+.grid-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,102,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,102,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* الدائرة المضيئة خلف البطاقة */
+.glow-orb {
+  position: fixed; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,102,255,0.08), transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none; z-index: 0;
+}
+
+/* البطاقة الرئيسية */
+.login-card {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 420px;
+  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,102,255,0.2);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 0 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,102,255,0.1);
+}
+
+/* الشعار */
+.login-logo {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 900;
+  letter-spacing: 0.08em; text-align: center;
+  margin-bottom: 0.4rem;
+  background: linear-gradient(135deg, #0066FF, #00CFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.login-subtitle {
+  text-align: center; font-size: 0.82rem;
+  color: var(--text-muted); margin-bottom: 2rem;
+  font-family: var(--font-mono); letter-spacing: 0.06em;
+}
+
+/* حقل الإدخال */
+.input-wrap {
+  position: relative; margin-bottom: 1rem;
+}
+.input-icon {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  right: 1rem; color: var(--text-subtle); font-size: 1rem;
+  pointer-events: none;
+}
+.input-wrap .form-input {
+  padding-right: 2.75rem;
+  background: rgba(255,255,255,0.04);
+}
+
+/* زر إظهار / إخفاء كلمة المرور */
+.toggle-pass {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  left: 1rem; color: var(--text-subtle); font-size: 0.9rem;
+  cursor: pointer; transition: color 0.2s; user-select: none;
+}
+.toggle-pass:hover { color: var(--primary); }
+
+/* رسالة الخطأ */
+.login-error {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: var(--r-md);
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem; color: #FCA5A5;
+  margin-bottom: 1rem; display: none;
+  align-items: center; gap: 0.5rem;
+}
+.login-error.show { display: flex; }
+
+/* تأثير الاهتزاز عند خطأ */
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%,60%  { transform: translateX(-8px); }
+  40%,80%  { transform: translateX(8px); }
+}
+.shake { animation: shake 0.4s var(--ease); }
+
+/* المعلومات الافتراضية */
+.default-creds {
+  margin-top: 1.5rem;
+  background: rgba(0,102,255,0.06);
+  border: 1px solid rgba(0,102,255,0.15);
+  border-radius: var(--r-md);
+  padding: 0.9rem 1rem;
+  font-size: 0.78rem; color: var(--text-muted);
+  text-align: center; line-height: 1.9;
+}
+.default-creds strong { color: var(--primary); font-family: var(--font-mono); }
+
+/* رابط الرجوع للمتجر */
+.back-link {
+  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+  margin-top: 1.25rem; font-size: 0.82rem; color: var(--text-subtle);
+  transition: color 0.2s; cursor: pointer;
+}
+.back-link:hover { color: var(--primary); }
+
+/* حالة التحميل على الزر */
+.btn-primary.loading {
+  pointer-events: none; opacity: 0.7;
+}
+.spinner {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  animation: spin 0.6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- خلفيات زخرفية -->
+<div class="grid-bg"></div>
+<div class="glow-orb"></div>
+
+<!-- بطاقة تسجيل الدخول -->
+<div class="login-card" id="login-card">
+
+  <!-- الشعار -->
+  <div class="login-logo">ZAPTIX</div>
+  <div class="login-subtitle">ADMIN_PANEL // ACCESS_REQUIRED</div>
+
+  <!-- رسالة الخطأ (مخفية في البداية) -->
+  <div class="login-error" id="login-error">
+    <span>⚠️</span>
+    <span id="error-text">اسم المستخدم أو كلمة المرور غلط</span>
+  </div>
+
+  <!-- حقل اسم المستخدم -->
+  <div class="form-group mb-4">
+    <label class="form-label">اسم المستخدم</label>
+    <div class="input-wrap">
+      <span class="input-icon">👤</span>
+      <input
+        type="text"
+        id="inp-user"
+        class="form-input"
+        placeholder="admin"
+        autocomplete="username"
+        onkeydown="if(event.key==='Enter') doLogin()"
+      >
+    </div>
+  </div>
+
+  <!-- حقل كلمة المرور -->
+  <div class="form-group mb-6">
+    <label class="form-label">كلمة المرور</label>
+    <div class="input-wrap">
+      <span class="input-icon">🔒</span>
+      <input
+        type="password"
+        id="inp-pass"
+        class="form-input"
+        placeholder="••••••••••"
+        autocomplete="current-password"
+        onkeydown="if(event.key==='Enter') doLogin()"
+        style="padding-left:2.75rem"
+      >
+      <span class="toggle-pass" onclick="togglePass()" id="pass-toggle">👁</span>
+    </div>
+  </div>
+
+  <!-- زر الدخول -->
+  <button class="btn btn-primary btn-full btn-lg" id="login-btn" onclick="doLogin()">
+    دخول →
+  </button>
+
+  <!-- بيانات الدخول الافتراضية (شيلها بعد أول تسجيل دخول) -->
+  <div class="default-creds">
+    الدخول الافتراضي:<br>
+    المستخدم: <strong>admin</strong> &nbsp;|&nbsp; المرور: <strong>ChangeMe123!</strong><br>
+    <span style="font-size:0.72rem;color:var(--text-subtle)">غيّر كلمة المرور من داخل لوحة التحكم</span>
+  </div>
+
+  <!-- رابط الرجوع -->
+  <div class="back-link" onclick="window.location.href='index.html'">
+    ← العودة للمتجر
+  </div>
+
+</div>
+
+<!-- إشعارات -->
+<div id="toast-wrap"></div>
+
+<script>
+/* ============================================================
+   login.html — JavaScript
+   كيف يشتغل نظام تسجيل الدخول:
+   - بيانات الدخول محفوظة في localStorage.
+   - عند أول تشغيل تكون admin / ChangeMe123!
+   - بعد الدخول الناجح يتم حفظ جلسة في sessionStorage.
+   - sessionStorage بيتمسح تلقائياً لما تقفل المتصفح.
+   ============================================================ */
+
+/* ── التحقق من الجلسة — لو دخلت خلاص روح للوحة مباشرة ── */
+if (sessionStorage.getItem('zaptix_admin_session') === 'active') {
+  window.location.href = 'admin.html';
+}
+
+/* ── بيانات الدخول الافتراضية ── */
+function getCredentials() {
+  try {
+    const saved = localStorage.getItem('zaptix_admin_creds');
+    if (saved) return JSON.parse(saved);
+  } catch(e) {}
+  /* افتراضي — يُحفظ في localStorage عند أول تشغيل */
+  const defaults = { username: 'admin', password: 'ChangeMe123!' };
+  localStorage.setItem('zaptix_admin_creds', JSON.stringify(defaults));
+  return defaults;
+}
+
+/* ── دالة تسجيل الدخول الرئيسية ── */
+function doLogin() {
+  const userEl = document.getElementById('inp-user');
+  const passEl = document.getElementById('inp-pass');
+  const btn    = document.getElementById('login-btn');
+  const errEl  = document.getElementById('login-error');
+  const errTxt = document.getElementById('error-text');
+
+  const username = userEl.value.trim();
+  const password = passEl.value;
+
+  /* التحقق من الحقول الفاضية */
+  if (!username || !password) {
+    showError('من فضلك ادخل اسم المستخدم وكلمة المرور');
+    return;
+  }
+
+  /* حالة التحميل */
+  btn.innerHTML = '<span class="spinner"></span> جاري التحقق...';
+  btn.classList.add('loading');
+
+  /* محاكاة تأخير بسيط (تجعل العملية تبدو أكثر مصداقية) */
+  setTimeout(() => {
+    const creds = getCredentials();
+
+    if (username === creds.username && password === creds.password) {
+      /* ✅ نجح الدخول */
+      sessionStorage.setItem('zaptix_admin_session', 'active');
+      sessionStorage.setItem('zaptix_admin_user', username);
+      sessionStorage.setItem('zaptix_login_time', new Date().toISOString());
+      btn.innerHTML = '✅ جاري الدخول...';
+      setTimeout(() => { window.location.href = 'admin.html'; }, 600);
+    } else {
+      /* ❌ فشل الدخول */
+      btn.innerHTML = 'دخول →';
+      btn.classList.remove('loading');
+      showError('اسم المستخدم أو كلمة المرور غلط');
+      document.getElementById('login-card').classList.add('shake');
+      setTimeout(() => document.getElementById('login-card').classList.remove('shake'), 500);
+      passEl.value = '';
+      passEl.focus();
+    }
+  }, 800);
+}
+
+/* ── إظهار رسالة الخطأ ── */
+function showError(msg) {
+  const errEl  = document.getElementById('login-error');
+  const errTxt = document.getElementById('error-text');
+  errTxt.textContent = msg;
+  errEl.classList.add('show');
+  setTimeout(() => errEl.classList.remove('show'), 4000);
+}
+
+/* ── إظهار / إخفاء كلمة المرور ── */
+function togglePass() {
+  const inp = document.getElementById('inp-pass');
+  const ico = document.getElementById('pass-toggle');
+  if (inp.type === 'password') {
+    inp.type = 'text'; ico.textContent = '🙈';
+  } else {
+    inp.type = 'password'; ico.textContent = '👁';
+  }
+}
+
+/* ── تركيز تلقائي على حقل اسم المستخدم ── */
+document.getElementById('inp-user').focus();
+</script>
+</body>
+</html>

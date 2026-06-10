@@ -1,0 +1,3001 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#080B12">
+<title>ZAPTIX | تكنولوجيا بريميوم — المستقبل في إيدك</title>
+<meta name="description" content="ZAPTIX — إكسسوارات تكنولوجيا بريميوم بأسعار ذكية. AirPods، باور بانك، شواحن سريعة. توصيل سريع لكل مصر. دفع عند الاستلام.">
+<meta name="keywords" content="ZAPTIX, إكسسوارات تكنولوجيا, AirPods, باور بانك, شواحن سريعة, مصر">
+<meta property="og:title" content="ZAPTIX | Premium Tech Store">
+<meta property="og:description" content="إكسسوارات تكنولوجيا بريميوم. أسعار ذكية. توصيل سريع.">
+<meta property="og:image" content="/assets/images/og-image.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ZAPTIX — PREMIUM ARCADE TECH DESIGN SYSTEM
+   ============================================================ */
+
+/* ── CSS VARIABLES (Dynamic via JS for category themes) ── */
+:root {
+  /* Core Brand */
+  --z-primary: #0066FF;
+  --z-primary-dark: #0047CC;
+  --z-primary-glow: rgba(0, 102, 255, 0.4);
+  --z-secondary: #00CFFF;
+  --z-accent: #FF6B00;
+  --z-neon-green: #39FF14;
+  --z-neon-purple: #B026FF;
+
+  /* Backgrounds */
+  --z-bg: #080B12;
+  --z-bg-2: #0D1220;
+  --z-surface: #111827;
+  --z-surface-2: #1a2235;
+  --z-card: #0F1929;
+
+  /* Borders */
+  --z-border: rgba(255,255,255,0.07);
+  --z-border-accent: rgba(0, 102, 255, 0.3);
+
+  /* Text */
+  --z-text: #E8EEFF;
+  --z-text-muted: rgba(232, 238, 255, 0.55);
+  --z-text-subtle: rgba(232, 238, 255, 0.3);
+
+  /* Category Theme (overridden by JS) */
+  --cat-primary: #0066FF;
+  --cat-secondary: #00CFFF;
+  --cat-accent: #FF6B00;
+  --cat-glow: rgba(0, 102, 255, 0.5);
+  --cat-bg: #080B12;
+  --cat-surface: #0D1220;
+  --cat-border: rgba(0, 102, 255, 0.2);
+  --cat-text-accent: #60A5FA;
+  --cat-gradient: linear-gradient(135deg, #0066FF, #00CFFF);
+
+  /* Spacing */
+  --gap-xs: 0.5rem;
+  --gap-sm: 1rem;
+  --gap-md: 1.5rem;
+  --gap-lg: 2.5rem;
+  --gap-xl: 4rem;
+  --gap-2xl: 6rem;
+
+  /* Typography */
+  --font-display: 'Orbitron', sans-serif;
+  --font-ui: 'Exo 2', sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Radius */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 9999px;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--z-bg);
+  color: var(--z-text);
+  font-family: var(--font-arabic);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+body.old-tech-active {
+  --z-bg: #05000F;
+  --z-bg-2: #0A0020;
+  --z-surface: #0F0028;
+  --z-card: #120030;
+  --z-border: rgba(176, 38, 255, 0.12);
+  --cat-primary: #B026FF;
+  --cat-secondary: #39FF14;
+  --cat-glow: rgba(176, 38, 255, 0.5);
+  --cat-gradient: linear-gradient(135deg, #B026FF, #39FF14);
+  --cat-text-accent: #B026FF;
+  background: var(--z-bg);
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input, textarea, select { font-family: inherit; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--z-bg); }
+::-webkit-scrollbar-thumb { background: var(--cat-primary); border-radius: 2px; }
+::selection { background: var(--cat-primary); color: #fff; }
+
+/* ── ARCADE GRID BACKGROUND ── */
+.arcade-grid-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,102,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,102,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+}
+.old-tech-active .arcade-grid-bg {
+  background-image:
+    linear-gradient(rgba(176,38,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57,255,20,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Scanlines overlay for Old Tech */
+.scanlines-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.15) 2px,
+    rgba(0,0,0,0.15) 4px
+  );
+}
+.old-tech-active .scanlines-overlay { display: block; }
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* ── LAYOUT ── */
+.container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1.25rem; position: relative; z-index: 2; }
+.section { padding: var(--gap-xl) 0; }
+.section--sm { padding: var(--gap-lg) 0; }
+
+/* ── TYPOGRAPHY SYSTEM ── */
+.display-text {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.brand-text { font-family: var(--font-display); letter-spacing: 0.1em; }
+.mono-text { font-family: var(--font-mono); }
+
+/* ── NEON GLOW EFFECTS ── */
+.glow-blue { text-shadow: 0 0 20px var(--cat-primary), 0 0 40px var(--cat-primary); }
+.glow-box { box-shadow: 0 0 20px var(--cat-glow), inset 0 0 20px rgba(0,0,0,0.5); }
+.glow-border { border-color: var(--cat-primary) !important; box-shadow: 0 0 15px var(--cat-glow); }
+.old-tech-active .glow-blue { text-shadow: 0 0 20px #B026FF, 0 0 40px #B026FF, 0 0 60px rgba(176,38,255,0.5); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.6rem; padding: 0.85rem 2rem; border-radius: var(--r-md);
+  font-family: var(--font-ui); font-weight: 700; font-size: 0.9rem;
+  letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+  transition: all 0.25s var(--ease); position: relative; overflow: hidden; white-space: nowrap;
+}
+.btn::before {
+  content: ''; position: absolute; inset: 0; opacity: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  transition: opacity 0.25s;
+}
+.btn:hover::before { opacity: 1; }
+
+.btn-primary {
+  background: var(--cat-primary); color: #fff;
+  box-shadow: 0 0 25px var(--cat-glow), 0 4px 15px rgba(0,0,0,0.4);
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 0 40px var(--cat-glow), 0 8px 25px rgba(0,0,0,0.5);
+}
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-outline {
+  background: transparent; color: var(--cat-primary);
+  border: 1.5px solid var(--cat-primary);
+  box-shadow: 0 0 15px var(--cat-glow);
+}
+.btn-outline:hover {
+  background: var(--cat-primary); color: #fff;
+  box-shadow: 0 0 30px var(--cat-glow);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.05); color: var(--z-text);
+  border: 1px solid var(--z-border);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--cat-primary); }
+
+.btn-whatsapp {
+  background: #25D366; color: #fff;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+}
+.btn-whatsapp:hover { background: #20BD5A; transform: translateY(-2px); box-shadow: 0 0 35px rgba(37,211,102,0.5); }
+
+.btn-sm { padding: 0.6rem 1.25rem; font-size: 0.8rem; }
+.btn-lg { padding: 1.1rem 2.5rem; font-size: 1rem; }
+.btn-icon { width: 44px; height: 44px; padding: 0; border-radius: var(--r-md); }
+.btn-full { width: 100%; }
+
+/* ── BADGE ── */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: var(--r-full);
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  font-family: var(--font-ui);
+}
+.badge--blue { background: rgba(0,102,255,0.15); color: #60A5FA; border: 1px solid rgba(0,102,255,0.3); }
+.badge--orange { background: rgba(255,107,0,0.15); color: #FF9A4D; border: 1px solid rgba(255,107,0,0.3); }
+.badge--green { background: rgba(57,255,20,0.1); color: #39FF14; border: 1px solid rgba(57,255,20,0.3); }
+.badge--purple { background: rgba(176,38,255,0.15); color: #D070FF; border: 1px solid rgba(176,38,255,0.35); }
+.badge--neon { background: #B026FF; color: #39FF14; border: 1px solid #39FF14; box-shadow: 0 0 10px rgba(57,255,20,0.4); }
+.badge--gold { background: rgba(212,175,55,0.15); color: #D4AF37; border: 1px solid rgba(212,175,55,0.3); }
+.badge--red { background: rgba(239,68,68,0.15); color: #FCA5A5; border: 1px solid rgba(239,68,68,0.3); }
+.badge--live { animation: livePulse 1.5s ease-in-out infinite; }
+@keyframes livePulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* ── CARDS ── */
+.card {
+  background: var(--z-card);
+  border: 1px solid var(--z-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: all 0.3s var(--ease);
+  position: relative;
+}
+.card:hover {
+  border-color: var(--cat-border, rgba(0,102,255,0.3));
+  box-shadow: 0 0 30px rgba(0,0,0,0.3), 0 0 1px var(--cat-primary);
+  transform: translateY(-3px);
+}
+.card::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 50%);
+  pointer-events: none;
+}
+
+/* ── SECTION LABELS ── */
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--cat-primary); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.section-eyebrow::before {
+  content: '//'; opacity: 0.5; font-family: var(--font-mono);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.section-title .accent { color: var(--cat-primary); }
+.section-subtitle { color: var(--z-text-muted); font-size: 1.05rem; max-width: 560px; }
+
+/* ── DIVIDER ── */
+.pixel-divider {
+  height: 1px; margin: 0;
+  background: linear-gradient(90deg, transparent, var(--cat-primary), transparent);
+}
+
+/* ── STARS ── */
+.stars { display: flex; gap: 2px; }
+.star { font-size: 0.8rem; }
+.star.filled { color: #F59E0B; }
+.star.empty { color: var(--z-text-subtle); }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--cat-primary);
+  padding: 0.4rem 0; overflow: hidden; position: relative; z-index: 100;
+}
+.old-tech-active .ticker { background: #B026FF; border-bottom: 1px solid #39FF14; }
+.ticker-inner {
+  display: flex; white-space: nowrap;
+  animation: ticker-scroll 20s linear infinite;
+}
+.ticker-item {
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0 2.5rem; color: #fff; opacity: 0.9;
+}
+.ticker-sep { opacity: 0.4; }
+@keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── NAVIGATION ── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  transition: all 0.3s var(--ease);
+  padding: 1rem 0;
+}
+#nav.scrolled {
+  background: rgba(8, 11, 18, 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--z-border);
+  padding: 0.7rem 0;
+}
+.old-tech-active #nav.scrolled { background: rgba(5, 0, 15, 0.94); border-bottom-color: rgba(176,38,255,0.2); }
+.nav-inner {
+  display: flex; align-items: center; gap: 1.5rem;
+  height: 56px;
+}
+.nav-logo {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+  letter-spacing: 0.05em; color: var(--z-text);
+  display: flex; align-items: center; gap: 0.4rem;
+  flex-shrink: 0;
+}
+.nav-logo .logo-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--cat-primary);
+  box-shadow: 0 0 10px var(--cat-glow);
+  animation: logoPulse 2s ease-in-out infinite;
+}
+@keyframes logoPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+.nav-links {
+  display: flex; align-items: center; gap: 0.25rem; flex: 1; justify-content: center;
+}
+.nav-link {
+  padding: 0.5rem 0.9rem; border-radius: var(--r-sm);
+  font-family: var(--font-ui); font-size: 0.85rem; font-weight: 500;
+  color: var(--z-text-muted); letter-spacing: 0.03em;
+  transition: all 0.2s; position: relative;
+}
+.nav-link:hover, .nav-link.active { color: var(--z-text); }
+.nav-link.active::after {
+  content: ''; position: absolute; bottom: -2px; left: 50%; right: 50%;
+  height: 2px; background: var(--cat-primary);
+  transition: all 0.3s; left: 0.9rem; right: 0.9rem;
+  box-shadow: 0 0 8px var(--cat-glow);
+}
+.nav-categories-btn {
+  font-family: var(--font-ui); font-size: 0.85rem; font-weight: 500;
+  color: var(--z-text-muted); padding: 0.5rem 0.9rem; border-radius: var(--r-sm);
+  display: flex; align-items: center; gap: 0.3rem; cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-categories-btn:hover { color: var(--z-text); }
+.nav-actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.nav-action-btn {
+  width: 40px; height: 40px; border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--z-text-muted); background: rgba(255,255,255,0.04);
+  border: 1px solid var(--z-border);
+  transition: all 0.2s; position: relative;
+}
+.nav-action-btn:hover {
+  color: var(--z-text); background: rgba(255,255,255,0.08);
+  border-color: var(--cat-primary);
+  box-shadow: 0 0 15px var(--cat-glow);
+}
+.nav-cart-count {
+  position: absolute; top: -4px; right: -4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--cat-primary); color: #fff;
+  font-size: 0.65rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+}
+.nav-search-bar {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--z-border);
+  border-radius: var(--r-md); padding: 0 1rem; width: 220px;
+  transition: all 0.3s;
+}
+.nav-search-bar:focus-within { border-color: var(--cat-primary); width: 280px; box-shadow: 0 0 20px var(--cat-glow); }
+.nav-search-bar input {
+  background: none; border: none; outline: none;
+  color: var(--z-text); font-size: 0.85rem; font-family: var(--font-arabic);
+  padding: 0.5rem 0; width: 100%;
+}
+.nav-search-bar input::placeholder { color: var(--z-text-subtle); }
+.mobile-menu-btn {
+  display: none; width: 40px; height: 40px; border-radius: var(--r-md);
+  background: rgba(255,255,255,0.04); border: 1px solid var(--z-border);
+  color: var(--z-text); align-items: center; justify-content: center;
+}
+
+/* Categories Dropdown */
+.cat-dropdown {
+  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  width: 600px; background: var(--z-surface);
+  border: 1px solid var(--z-border); border-radius: var(--r-lg);
+  padding: 1.25rem; display: none; gap: 0.75rem;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  z-index: 1001;
+}
+.cat-dropdown.open { display: grid; animation: dropIn 0.2s var(--ease-out); }
+@keyframes dropIn { from { opacity: 0; transform: translateX(-50%) translateY(-8px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+.cat-option {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem;
+  border-radius: var(--r-md); border: 1px solid var(--z-border);
+  cursor: pointer; transition: all 0.2s;
+  background: rgba(255,255,255,0.02);
+}
+.cat-option:hover { border-color: var(--cat-primary); background: rgba(0,102,255,0.05); }
+.cat-option.disabled { opacity: 0.4; cursor: not-allowed; }
+.cat-icon { font-size: 1.8rem; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: var(--r-md); border: 1px solid var(--z-border); }
+.cat-info h4 { font-family: var(--font-ui); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; }
+.cat-info p { font-size: 0.75rem; color: var(--z-text-muted); }
+
+/* Mobile Menu */
+#mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(5, 8, 18, 0.97); backdrop-filter: blur(20px);
+  flex-direction: column; padding: 5rem 1.5rem 2rem;
+  overflow-y: auto;
+}
+#mobile-menu.open { display: flex; animation: slideDown 0.3s var(--ease-out); }
+@keyframes slideDown { from { opacity: 0; } to { opacity: 1; } }
+.mobile-nav-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0; border-bottom: 1px solid var(--z-border);
+  font-family: var(--font-ui); font-size: 1.1rem; font-weight: 600; color: var(--z-text);
+}
+.mobile-nav-link:hover { color: var(--cat-primary); }
+
+/* ── HERO SECTION ── */
+#hero {
+  min-height: 100vh; display: flex; align-items: center; position: relative;
+  overflow: hidden; padding-top: 5rem;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-radial {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(0,102,255,0.12), transparent 70%);
+}
+.old-tech-active .hero-radial {
+  background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(176,38,255,0.15), transparent 70%);
+}
+.hero-corner-accent {
+  position: absolute; width: 400px; height: 400px; border-radius: 50%;
+  filter: blur(100px); pointer-events: none;
+}
+.hero-corner-accent--tl { top: -100px; right: -100px; background: rgba(0,102,255,0.08); }
+.hero-corner-accent--br { bottom: -100px; left: -100px; background: rgba(0,207,255,0.06); }
+.old-tech-active .hero-corner-accent--tl { background: rgba(176,38,255,0.12); }
+.old-tech-active .hero-corner-accent--br { background: rgba(57,255,20,0.06); }
+
+/* Animated border frame */
+.hero-frame {
+  position: absolute; inset: 20px;
+  border: 1px solid rgba(0,102,255,0.08);
+  border-radius: var(--r-xl); pointer-events: none;
+}
+.hero-frame::before, .hero-frame::after {
+  content: ''; position: absolute; width: 40px; height: 40px;
+  border-color: var(--cat-primary); border-style: solid;
+}
+.hero-frame::before { top: -1px; right: -1px; border-width: 2px 2px 0 0; border-radius: 0 var(--r-md) 0 0; box-shadow: 2px -2px 10px var(--cat-glow); }
+.hero-frame::after { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; border-radius: 0 0 0 var(--r-md); box-shadow: -2px 2px 10px var(--cat-glow); }
+
+.hero-content { position: relative; z-index: 2; padding: 3rem 0; }
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 4rem;
+}
+
+/* Pixel eyebrow */
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;
+}
+.pixel-indicator {
+  display: flex; gap: 3px; align-items: center;
+}
+.pixel-dot {
+  width: 6px; height: 6px; border-radius: 1px;
+  background: var(--cat-primary);
+  animation: pixelBlink 1.2s ease-in-out infinite;
+}
+.pixel-dot:nth-child(2) { animation-delay: 0.2s; background: var(--cat-secondary); }
+.pixel-dot:nth-child(3) { animation-delay: 0.4s; opacity: 0.5; }
+@keyframes pixelBlink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.hero-status {
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cat-primary);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.hero-status-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #39FF14;
+  box-shadow: 0 0 8px #39FF14; animation: livePulse 1.5s infinite;
+}
+
+/* Hero headline */
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
+  margin-bottom: 1.5rem; color: var(--z-text);
+}
+.hero-h1 .line-accent {
+  background: var(--cat-gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+.hero-h1 .line-outline {
+  -webkit-text-stroke: 1px var(--z-text-subtle);
+  color: transparent; display: block;
+}
+
+.hero-tagline {
+  font-size: 1.1rem; color: var(--z-text-muted); line-height: 1.8;
+  margin-bottom: 2rem; max-width: 440px;
+  font-family: var(--font-arabic);
+}
+
+.hero-cta-group {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+/* Trust bar */
+.hero-trust {
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.82rem; color: var(--z-text-muted);
+}
+.trust-icon { font-size: 0.9rem; }
+.trust-divider { width: 1px; height: 20px; background: var(--z-border); }
+
+/* Hero visual - product showcase */
+.hero-visual {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.hero-product-ring {
+  position: relative; width: 400px; height: 400px;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid;
+}
+.hero-ring-1 {
+  inset: 0; border-color: rgba(0,102,255,0.15);
+  animation: ringRotate 20s linear infinite;
+}
+.hero-ring-2 {
+  inset: 30px; border-color: rgba(0,207,255,0.1);
+  animation: ringRotate 15s linear infinite reverse;
+}
+.hero-ring-3 {
+  inset: 60px; border-color: rgba(0,102,255,0.08);
+  animation: ringRotate 25s linear infinite;
+}
+@keyframes ringRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Corner dots on ring */
+.ring-dot {
+  position: absolute; width: 6px; height: 6px; border-radius: 1px;
+  background: var(--cat-primary); box-shadow: 0 0 10px var(--cat-glow);
+}
+.ring-dot-1 { top: 0; left: 50%; transform: translateX(-50%); }
+.ring-dot-2 { right: 0; top: 50%; transform: translateY(-50%); }
+.ring-dot-3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.ring-dot-4 { left: 0; top: 50%; transform: translateY(-50%); }
+
+.hero-product-center {
+  position: relative; z-index: 2;
+  width: 240px; height: 240px;
+  background: var(--z-surface);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--z-border);
+  box-shadow: 0 0 60px var(--cat-glow), inset 0 0 30px rgba(0,0,0,0.5);
+  font-size: 6rem;
+  animation: productFloat 3s ease-in-out infinite;
+}
+@keyframes productFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Floating stat cards */
+.hero-stat {
+  position: absolute; z-index: 3;
+  background: rgba(13, 18, 32, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--z-border);
+  border-radius: var(--r-md); padding: 0.75rem 1rem;
+  display: flex; align-items: center; gap: 0.6rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  animation: statFloat 0.5s var(--ease-out) both;
+}
+.hero-stat--tl { top: 40px; right: 0; animation-delay: 0.3s; }
+.hero-stat--br { bottom: 60px; left: 0; animation-delay: 0.5s; }
+.hero-stat--tr { top: 120px; left: 0; animation-delay: 0.7s; }
+@keyframes statFloat { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+.stat-icon { font-size: 1.2rem; }
+.stat-val { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: var(--cat-primary); }
+.stat-label { font-size: 0.72rem; color: var(--z-text-muted); }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--z-surface); border-top: 1px solid var(--z-border); border-bottom: 1px solid var(--z-border);
+}
+.trust-bar-inner {
+  display: flex; align-items: center; justify-content: space-around;
+  padding: 1rem 0; gap: 1rem; flex-wrap: wrap;
+}
+.trust-bar-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.82rem; color: var(--z-text-muted);
+  padding: 0.5rem 0; font-family: var(--font-arabic);
+}
+.trust-bar-icon {
+  width: 36px; height: 36px; border-radius: var(--r-sm);
+  background: rgba(0,102,255,0.1); border: 1px solid rgba(0,102,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.old-tech-active .trust-bar-icon { background: rgba(176,38,255,0.1); border-color: rgba(176,38,255,0.25); }
+.trust-bar-text strong { display: block; color: var(--z-text); font-size: 0.85rem; font-weight: 600; }
+
+/* ── CATEGORY SHOWCASE ── */
+.cat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+}
+.cat-card {
+  position: relative; padding: 2rem 1.5rem;
+  border-radius: var(--r-lg); border: 1px solid var(--z-border);
+  cursor: pointer; overflow: hidden; transition: all 0.3s var(--ease);
+  background: var(--z-card);
+}
+.cat-card.active, .cat-card:hover {
+  transform: translateY(-4px);
+}
+.cat-card-bg {
+  position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s;
+}
+.cat-card:hover .cat-card-bg, .cat-card.active .cat-card-bg { opacity: 1; }
+.cat-card-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.cat-card-name {
+  font-family: var(--font-ui); font-size: 0.95rem; font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.cat-card-desc { font-size: 0.78rem; color: var(--z-text-muted); line-height: 1.5; }
+.cat-card-arrow {
+  position: absolute; bottom: 1.25rem; left: 1.5rem;
+  font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em;
+  opacity: 0; transform: translateX(-5px); transition: all 0.3s;
+}
+.cat-card:hover .cat-card-arrow, .cat-card.active .cat-card-arrow {
+  opacity: 1; transform: translateX(0);
+}
+.cat-soon { opacity: 0.45; cursor: not-allowed; }
+.cat-soon:hover { transform: none; }
+
+/* Modern Tech card */
+.cat-card--modern { border-color: rgba(0,102,255,0.2); }
+.cat-card--modern .cat-card-bg { background: linear-gradient(135deg, rgba(0,102,255,0.08), rgba(0,207,255,0.04)); }
+.cat-card--modern .cat-card-arrow { color: #0066FF; }
+/* Old Tech card */
+.cat-card--oldtech { border-color: rgba(176,38,255,0.25); }
+.cat-card--oldtech .cat-card-bg { background: linear-gradient(135deg, rgba(176,38,255,0.1), rgba(57,255,20,0.04)); }
+.cat-card--oldtech .cat-card-name { }
+.cat-card--oldtech .cat-card-arrow { color: #B026FF; }
+/* Gaming */
+.cat-card--gaming { border-color: rgba(0,255,136,0.15); }
+.cat-card--gaming .cat-card-bg { background: linear-gradient(135deg, rgba(0,255,136,0.06), rgba(0,207,255,0.03)); }
+/* Premium */
+.cat-card--premium { border-color: rgba(212,175,55,0.2); }
+.cat-card--premium .cat-card-bg { background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(245,230,160,0.03)); }
+
+/* ── PRODUCT CARDS ── */
+.products-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+}
+.products-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+.product-card {
+  background: var(--z-card); border: 1px solid var(--z-border);
+  border-radius: var(--r-lg); overflow: hidden;
+  transition: all 0.3s var(--ease); cursor: pointer; position: relative;
+}
+.product-card:hover {
+  border-color: var(--cat-primary);
+  box-shadow: 0 0 30px var(--cat-glow), 0 20px 60px rgba(0,0,0,0.4);
+  transform: translateY(-5px);
+}
+.product-card:hover .product-cta { opacity: 1; transform: translateY(0); }
+
+.product-img-wrap {
+  aspect-ratio: 1; background: var(--z-surface);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4.5rem; position: relative; overflow: hidden;
+}
+.product-img-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.3));
+}
+.product-img-emoji {
+  z-index: 1; transition: transform 0.4s var(--ease-spring);
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+}
+.product-card:hover .product-img-emoji { transform: scale(1.1) rotate(-3deg); }
+
+/* Old Tech card image area */
+.old-tech-active .product-img-wrap {
+  background: linear-gradient(135deg, #0A0020, #0F0028);
+}
+.product-img-wrap .pixel-corner {
+  position: absolute; width: 12px; height: 12px;
+  border-color: var(--cat-primary); border-style: solid; opacity: 0;
+  transition: opacity 0.3s;
+}
+.product-card:hover .pixel-corner { opacity: 0.7; }
+.pixel-corner--tl { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+.pixel-corner--br { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+
+.product-badge {
+  position: absolute; top: 0.75rem; right: 0.75rem; z-index: 2;
+}
+
+.product-wishlist {
+  position: absolute; top: 0.75rem; left: 0.75rem; z-index: 2;
+  width: 32px; height: 32px; border-radius: var(--r-sm);
+  background: rgba(13,18,32,0.8); border: 1px solid var(--z-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--z-text-muted); font-size: 0.9rem;
+  opacity: 0; transition: all 0.2s; cursor: pointer;
+}
+.product-card:hover .product-wishlist { opacity: 1; }
+.product-wishlist:hover, .product-wishlist.active { color: #EF4444; border-color: rgba(239,68,68,0.4); }
+.product-wishlist.active { opacity: 1; }
+
+.product-info { padding: 1.25rem; }
+.product-category {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--cat-primary);
+  margin-bottom: 0.4rem;
+}
+.product-name {
+  font-family: var(--font-ui); font-size: 0.9rem; font-weight: 700;
+  line-height: 1.3; margin-bottom: 0.5rem; color: var(--z-text);
+}
+.product-rating { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+.rating-count { font-size: 0.75rem; color: var(--z-text-muted); }
+.product-pricing { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.product-price {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
+  color: var(--z-text);
+}
+.product-old-price { font-size: 0.82rem; color: var(--z-text-subtle); text-decoration: line-through; }
+.product-save { font-size: 0.72rem; color: #39FF14; font-weight: 700; font-family: var(--font-mono); }
+
+.product-cta {
+  display: flex; gap: 0.5rem;
+  opacity: 0; transform: translateY(6px); transition: all 0.25s var(--ease);
+}
+.product-card:hover .product-cta { opacity: 1; transform: translateY(0); }
+
+.product-stock {
+  font-family: var(--font-mono); font-size: 0.68rem; color: var(--z-text-subtle);
+  margin-top: 0.6rem; letter-spacing: 0.06em;
+}
+.product-stock.low { color: #F59E0B; }
+
+/* Filter bar */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem;
+  flex-wrap: wrap; margin-bottom: 2rem;
+}
+.filter-btn {
+  padding: 0.5rem 1.1rem; border-radius: var(--r-full);
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  background: rgba(255,255,255,0.04); color: var(--z-text-muted);
+  border: 1px solid var(--z-border); cursor: pointer; transition: all 0.2s;
+}
+.filter-btn:hover { border-color: var(--cat-primary); color: var(--cat-primary); }
+.filter-btn.active {
+  background: var(--cat-primary); color: #fff; border-color: var(--cat-primary);
+  box-shadow: 0 0 15px var(--cat-glow);
+}
+
+/* ── WHY ZAPTIX ── */
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.why-card {
+  padding: 2rem; border-radius: var(--r-lg);
+  background: var(--z-card); border: 1px solid var(--z-border);
+  position: relative; overflow: hidden; transition: all 0.3s;
+}
+.why-card:hover {
+  border-color: var(--cat-primary);
+  box-shadow: 0 0 25px var(--cat-glow);
+  transform: translateY(-3px);
+}
+.why-card::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle, var(--cat-glow), transparent 70%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.why-card:hover::before { opacity: 1; }
+.why-icon {
+  font-size: 2rem; margin-bottom: 1.25rem; display: block;
+  filter: drop-shadow(0 0 10px var(--cat-glow));
+}
+.why-title { font-family: var(--font-ui); font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+.why-desc { font-size: 0.88rem; color: var(--z-text-muted); line-height: 1.7; }
+.why-number {
+  position: absolute; top: 1.5rem; left: 1.5rem;
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--cat-primary); opacity: 0.5; letter-spacing: 0.1em;
+}
+
+/* ── REVIEWS ── */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.review-card {
+  padding: 1.5rem; border-radius: var(--r-lg);
+  background: var(--z-card); border: 1px solid var(--z-border);
+  position: relative; overflow: hidden; transition: all 0.3s;
+}
+.review-card:hover { border-color: var(--cat-border); transform: translateY(-3px); }
+.review-card::before {
+  content: '"'; position: absolute; top: 1rem; left: 1.5rem;
+  font-family: var(--font-display); font-size: 4rem; color: var(--cat-primary);
+  opacity: 0.1; line-height: 1; pointer-events: none;
+}
+.review-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.reviewer-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--z-surface-2); display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; border: 2px solid var(--cat-primary);
+  box-shadow: 0 0 15px var(--cat-glow);
+}
+.reviewer-name { font-family: var(--font-ui); font-size: 0.9rem; font-weight: 700; }
+.reviewer-location { font-size: 0.72rem; color: var(--z-text-muted); }
+.review-text { font-size: 0.88rem; color: var(--z-text-muted); line-height: 1.8; margin-bottom: 0.75rem; }
+.review-product { font-family: var(--font-mono); font-size: 0.7rem; color: var(--cat-primary); letter-spacing: 0.06em; }
+.verified-badge { font-size: 0.7rem; color: #39FF14; display: flex; align-items: center; gap: 0.3rem; }
+
+/* ── OFFER SECTION ── */
+.offer-banner {
+  background: var(--z-surface); border: 1px solid var(--z-border);
+  border-radius: var(--r-xl); padding: 3rem;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 3rem; position: relative; overflow: hidden;
+}
+.offer-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,102,255,0.08), transparent 60%, rgba(255,107,0,0.05));
+}
+.offer-title { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 0.75rem; }
+.offer-sub { color: var(--z-text-muted); margin-bottom: 1.5rem; }
+.offer-countdown {
+  display: flex; gap: 0.75rem; align-items: center;
+  margin-bottom: 1.5rem;
+}
+.countdown-unit {
+  text-align: center; min-width: 60px;
+  background: var(--z-card); border: 1px solid var(--z-border);
+  border-radius: var(--r-md); padding: 0.6rem;
+}
+.countdown-num {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--cat-primary); display: block; letter-spacing: -0.02em;
+}
+.countdown-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--z-text-muted); text-transform: uppercase; }
+.countdown-sep { font-family: var(--font-display); font-size: 1.2rem; color: var(--cat-primary); margin-top: -8px; }
+
+.offer-product-display {
+  text-align: center; padding: 2rem;
+  background: var(--z-card); border-radius: var(--r-xl);
+  border: 1px solid var(--cat-border);
+  min-width: 220px;
+  box-shadow: 0 0 40px var(--cat-glow);
+}
+.offer-emoji { font-size: 5rem; display: block; margin-bottom: 1rem; animation: productFloat 3s ease-in-out infinite; }
+.offer-price-new { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--cat-primary); }
+.offer-price-old { font-size: 0.9rem; color: var(--z-text-subtle); text-decoration: line-through; }
+.offer-discount-tag {
+  display: inline-block; background: var(--z-accent);
+  color: #fff; padding: 2px 8px; border-radius: var(--r-sm);
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+  margin-top: 0.4rem;
+}
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 0.75rem; max-width: 760px; margin: 0 auto; }
+.faq-item {
+  background: var(--z-card); border: 1px solid var(--z-border);
+  border-radius: var(--r-lg); overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item.open { border-color: var(--cat-border); }
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 1.5rem; cursor: pointer; gap: 1rem;
+  font-family: var(--font-arabic); font-size: 0.95rem; font-weight: 600;
+  transition: color 0.2s;
+}
+.faq-item.open .faq-question { color: var(--cat-primary); }
+.faq-chevron {
+  width: 24px; height: 24px; border-radius: var(--r-sm);
+  background: var(--z-surface); border: 1px solid var(--z-border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: transform 0.3s, background 0.3s;
+  font-size: 0.7rem;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--cat-primary); border-color: var(--cat-primary); }
+.faq-answer {
+  padding: 0 1.5rem; max-height: 0; overflow: hidden;
+  transition: max-height 0.4s var(--ease), padding 0.4s;
+  color: var(--z-text-muted); font-size: 0.9rem; line-height: 1.8;
+}
+.faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.25rem; }
+
+/* ── FOOTER ── */
+#footer {
+  background: var(--z-surface); border-top: 1px solid var(--z-border);
+  padding: 4rem 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand-logo {
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 900;
+  letter-spacing: 0.05em; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;
+}
+.footer-desc { font-size: 0.88rem; color: var(--z-text-muted); line-height: 1.8; margin-bottom: 1.5rem; max-width: 280px; }
+.footer-social { display: flex; gap: 0.6rem; }
+.social-btn {
+  width: 38px; height: 38px; border-radius: var(--r-sm);
+  background: rgba(255,255,255,0.04); border: 1px solid var(--z-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: var(--z-text-muted);
+  transition: all 0.2s; cursor: pointer;
+}
+.social-btn:hover {
+  border-color: var(--cat-primary); color: var(--cat-primary);
+  box-shadow: 0 0 15px var(--cat-glow); background: rgba(0,102,255,0.08);
+}
+.footer-col-title {
+  font-family: var(--font-ui); font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--z-text-muted); margin-bottom: 1.25rem;
+}
+.footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-link {
+  font-size: 0.88rem; color: var(--z-text-muted); transition: color 0.2s;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.footer-link:hover { color: var(--z-text); }
+.footer-link:hover::before { color: var(--cat-primary); }
+
+.footer-bottom {
+  border-top: 1px solid var(--z-border);
+  padding: 1.5rem 0;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+}
+.footer-copyright { font-size: 0.8rem; color: var(--z-text-subtle); font-family: var(--font-mono); }
+.footer-payment { display: flex; align-items: center; gap: 0.75rem; }
+.payment-badge {
+  background: rgba(255,255,255,0.06); border: 1px solid var(--z-border);
+  border-radius: var(--r-sm); padding: 0.3rem 0.7rem;
+  font-size: 0.72rem; color: var(--z-text-muted); font-family: var(--font-mono);
+}
+
+/* ── CART SIDEBAR ── */
+#cart-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  z-index: 2000; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s; backdrop-filter: blur(4px);
+}
+#cart-overlay.open { opacity: 1; pointer-events: all; }
+#cart-sidebar {
+  position: fixed; top: 0; left: -480px; width: 480px; max-width: 100vw;
+  height: 100vh; background: var(--z-surface-2);
+  border-right: 1px solid var(--z-border);
+  z-index: 2001; transition: left 0.35s var(--ease-out);
+  display: flex; flex-direction: column;
+  box-shadow: 4px 0 40px rgba(0,0,0,0.5);
+}
+#cart-sidebar.open { left: 0; }
+.cart-head {
+  padding: 1.5rem; border-bottom: 1px solid var(--z-border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.cart-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; }
+.cart-body { flex: 1; overflow-y: auto; padding: 1rem; }
+.cart-empty { text-align: center; padding: 4rem 2rem; color: var(--z-text-muted); }
+.cart-empty-icon { font-size: 4rem; margin-bottom: 1rem; display: block; }
+.cart-item {
+  display: flex; gap: 1rem; padding: 1rem;
+  background: var(--z-card); border: 1px solid var(--z-border);
+  border-radius: var(--r-md); margin-bottom: 0.75rem;
+  align-items: center;
+}
+.cart-item-img {
+  width: 60px; height: 60px; background: var(--z-surface);
+  border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; flex-shrink: 0; border: 1px solid var(--z-border);
+}
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-name { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.25rem; font-family: var(--font-arabic); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cart-item-price { font-family: var(--font-display); font-size: 0.9rem; color: var(--cat-primary); }
+.cart-qty {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--z-surface); border-radius: var(--r-sm);
+  border: 1px solid var(--z-border); padding: 0.25rem;
+}
+.cart-qty-btn {
+  width: 26px; height: 26px; border-radius: 4px;
+  font-size: 1rem; color: var(--z-text-muted);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; background: none;
+}
+.cart-qty-btn:hover { background: rgba(255,255,255,0.1); color: var(--z-text); }
+.cart-qty-val { font-family: var(--font-mono); font-size: 0.8rem; min-width: 20px; text-align: center; }
+.cart-item-remove { color: var(--z-text-subtle); cursor: pointer; padding: 4px; transition: color 0.2s; }
+.cart-item-remove:hover { color: #EF4444; }
+.cart-foot {
+  padding: 1.25rem; border-top: 1px solid var(--z-border);
+  flex-shrink: 0; background: var(--z-surface);
+}
+.cart-subtotal { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--z-text-muted); }
+.cart-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.cart-total-label { font-family: var(--font-ui); font-size: 0.95rem; font-weight: 700; }
+.cart-total-val { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--cat-primary); }
+.cart-cod-note {
+  background: rgba(57,255,20,0.08); border: 1px solid rgba(57,255,20,0.2);
+  border-radius: var(--r-sm); padding: 0.6rem 0.75rem; margin-bottom: 1rem;
+  font-size: 0.8rem; color: #39FF14; display: flex; align-items: center; gap: 0.5rem;
+}
+
+/* ── MODALS ── */
+#product-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+  z-index: 3000; display: none; align-items: center; justify-content: center;
+  padding: 1rem; backdrop-filter: blur(8px);
+}
+#product-modal-overlay.open { display: flex; animation: fadeIn 0.2s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+#product-modal {
+  background: var(--z-surface-2); border: 1px solid var(--z-border);
+  border-radius: var(--r-xl); max-width: 820px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  animation: modalUp 0.3s var(--ease-out);
+}
+@keyframes modalUp { from { opacity: 0; transform: translateY(30px) scale(0.97); } to { opacity: 1; transform: none; } }
+.modal-inner { display: grid; grid-template-columns: 1fr 1fr; }
+.modal-img-side {
+  background: var(--z-card);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 7rem; aspect-ratio: 1; border-radius: var(--r-xl) 0 0 var(--r-xl);
+  position: relative; overflow: hidden;
+}
+.modal-img-side::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at center, var(--cat-glow), transparent 60%);
+  opacity: 0.3;
+}
+.modal-info-side { padding: 2.5rem; }
+.modal-cat { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-primary); margin-bottom: 0.75rem; }
+.modal-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; margin-bottom: 0.75rem; line-height: 1.2; }
+.modal-desc { font-size: 0.88rem; color: var(--z-text-muted); line-height: 1.8; margin-bottom: 1.25rem; }
+.modal-features { list-style: none; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.modal-features li { font-size: 0.82rem; color: var(--z-text-muted); display: flex; align-items: center; gap: 0.5rem; }
+.modal-features li::before { content: '▸'; color: var(--cat-primary); font-family: var(--font-mono); font-size: 0.7rem; }
+.modal-pricing { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.5rem; }
+.modal-price { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--cat-primary); }
+.modal-old-price { font-size: 1rem; color: var(--z-text-subtle); text-decoration: line-through; }
+.modal-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.modal-trust { display: flex; gap: 1rem; flex-wrap: wrap; padding-top: 1.25rem; border-top: 1px solid var(--z-border); }
+.modal-trust-item { font-size: 0.78rem; color: var(--z-text-muted); display: flex; align-items: center; gap: 0.35rem; }
+.modal-close {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  width: 34px; height: 34px; border-radius: var(--r-sm);
+  background: rgba(255,255,255,0.06); border: 1px solid var(--z-border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--z-text-muted); transition: all 0.2s;
+}
+.modal-close:hover { color: var(--z-text); background: rgba(255,255,255,0.1); }
+
+/* ── TOAST ── */
+#toast-container {
+  position: fixed; bottom: 2rem; right: 2rem;
+  z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem;
+  pointer-events: none;
+}
+.toast {
+  background: var(--z-surface-2); border: 1px solid var(--z-border);
+  border-radius: var(--r-md); padding: 0.9rem 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  font-size: 0.88rem; color: var(--z-text);
+  animation: toastIn 0.3s var(--ease-out);
+  min-width: 280px; pointer-events: all;
+}
+.toast.removing { animation: toastOut 0.25s var(--ease) forwards; }
+@keyframes toastIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: none; } }
+@keyframes toastOut { to { opacity: 0; transform: translateX(20px); } }
+.toast-icon { font-size: 1.2rem; flex-shrink: 0; }
+.toast-left { display: flex; flex-direction: column; }
+.toast-title { font-family: var(--font-ui); font-weight: 700; font-size: 0.85rem; }
+.toast-sub { font-size: 0.77rem; color: var(--z-text-muted); }
+.toast--success { border-left: 3px solid #39FF14; }
+.toast--error { border-left: 3px solid #EF4444; }
+.toast--info { border-left: 3px solid var(--cat-primary); }
+
+/* ── FLOATING ACTIONS ── */
+.fab-group {
+  position: fixed; bottom: 1.75rem; left: 1.75rem;
+  z-index: 500; display: flex; flex-direction: column; gap: 0.6rem;
+}
+.fab {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; cursor: pointer; transition: all 0.25s var(--ease-spring);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  text-decoration: none;
+}
+.fab:hover { transform: scale(1.12) translateY(-2px); }
+.fab--whatsapp { background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+.fab--messenger { background: #006AFF; box-shadow: 0 4px 20px rgba(0,106,255,0.4); }
+
+/* Back to top */
+#back-top {
+  position: fixed; bottom: 1.75rem; right: 1.75rem;
+  width: 44px; height: 44px; border-radius: var(--r-md);
+  background: var(--z-surface); border: 1px solid var(--z-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--z-text-muted); cursor: pointer; z-index: 500;
+  opacity: 0; transform: translateY(10px); pointer-events: none;
+  transition: all 0.3s;
+}
+#back-top.show { opacity: 1; transform: translateY(0); pointer-events: all; }
+#back-top:hover { border-color: var(--cat-primary); color: var(--cat-primary); box-shadow: 0 0 15px var(--cat-glow); }
+
+/* ── EXIT POPUP ── */
+#exit-popup {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+  z-index: 9998; display: none; align-items: center; justify-content: center;
+  padding: 1rem; backdrop-filter: blur(8px);
+}
+#exit-popup.show { display: flex; }
+.exit-modal {
+  background: var(--z-surface-2); border: 1px solid var(--z-border);
+  border-radius: var(--r-xl); max-width: 460px; width: 100%;
+  padding: 3rem 2.5rem; text-align: center; position: relative;
+  animation: modalUp 0.3s var(--ease-out);
+}
+.exit-modal::before {
+  content: ''; position: absolute; inset: 0; border-radius: var(--r-xl);
+  background: radial-gradient(circle at top, rgba(0,102,255,0.08), transparent 60%);
+}
+.exit-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+.exit-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; }
+.exit-sub { color: var(--z-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+.exit-code-box {
+  background: var(--z-card); border: 2px dashed var(--cat-primary);
+  border-radius: var(--r-md); padding: 1rem; margin-bottom: 1.5rem;
+  font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700;
+  letter-spacing: 0.15em; color: var(--cat-primary);
+  box-shadow: 0 0 20px var(--cat-glow); cursor: pointer;
+  transition: all 0.2s;
+}
+.exit-code-box:hover { transform: scale(1.02); }
+.exit-dismiss { font-size: 0.82rem; color: var(--z-text-subtle); cursor: pointer; margin-top: 1rem; display: block; transition: color 0.2s; }
+.exit-dismiss:hover { color: var(--z-text-muted); }
+
+/* ── OLD TECH SECTION SPECIFIC ── */
+.old-tech-banner {
+  background: linear-gradient(135deg, rgba(176,38,255,0.15), rgba(57,255,20,0.05));
+  border: 1px solid rgba(176,38,255,0.3);
+  border-radius: var(--r-lg); padding: 1.5rem 2rem;
+  display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;
+  font-family: var(--font-mono); font-size: 0.8rem;
+}
+.old-tech-label {
+  color: #B026FF; text-transform: uppercase; letter-spacing: 0.12em;
+  text-shadow: 0 0 15px rgba(176,38,255,0.8);
+}
+.crt-text {
+  font-family: var(--font-mono) !important;
+  text-shadow: 0 0 10px #39FF14;
+  color: #39FF14 !important;
+}
+
+/* ── WISHLIST PAGE ── */
+.page-hero {
+  padding: 8rem 0 4rem; border-bottom: 1px solid var(--z-border);
+  position: relative;
+}
+.page-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; }
+
+/* ── LOADING SCREEN ── */
+#loading {
+  position: fixed; inset: 0; background: var(--z-bg);
+  z-index: 99999; display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 2rem;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+#loading.hidden { opacity: 0; visibility: hidden; }
+.loading-logo {
+  font-family: var(--font-display); font-size: 2.5rem; font-weight: 900;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #0066FF, #00CFFF);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: logoPulse 1s ease-in-out infinite;
+}
+.loading-bar { width: 200px; height: 2px; background: var(--z-border); border-radius: 1px; overflow: hidden; }
+.loading-bar-fill { height: 100%; background: var(--cat-gradient); width: 0; animation: loadFill 1.2s var(--ease-out) forwards; }
+@keyframes loadFill { to { width: 100%; } }
+.loading-text { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--z-text-muted); animation: blink 1s step-end infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+.reveal-left.visible { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+.reveal-right.visible { opacity: 1; transform: none; }
+.stagger-1 { transition-delay: 0.05s; }
+.stagger-2 { transition-delay: 0.1s; }
+.stagger-3 { transition-delay: 0.15s; }
+.stagger-4 { transition-delay: 0.2s; }
+.stagger-5 { transition-delay: 0.25s; }
+.stagger-6 { transition-delay: 0.3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+  .hero-tagline { margin: 0 auto 2rem; }
+  .hero-cta-group, .hero-trust { justify-content: center; }
+  .hero-visual { margin-top: 1rem; }
+  .hero-eyebrow { justify-content: center; }
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .nav-links, .nav-search-bar { display: none; }
+  .mobile-menu-btn { display: flex; }
+}
+@media (max-width: 768px) {
+  :root { --gap-xl: 3rem; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .cat-grid { grid-template-columns: 1fr 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .offer-banner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .modal-inner { grid-template-columns: 1fr; }
+  .modal-img-side { border-radius: var(--r-xl) var(--r-xl) 0 0; aspect-ratio: auto; padding: 2rem 0; }
+  #cart-sidebar { width: 100vw; left: -100vw; }
+  .hero-product-ring { width: 280px; height: 280px; }
+  .hero-product-center { width: 160px; height: 160px; font-size: 4rem; }
+  .hero-stat--tl, .hero-stat--tr { display: none; }
+  .fab-group { bottom: 1rem; left: 1rem; }
+  #back-top { bottom: 1rem; right: 1rem; }
+}
+@media (max-width: 480px) {
+  .products-grid { gap: 0.75rem; }
+  .product-info { padding: 1rem; }
+  .btn { padding: 0.75rem 1.5rem; }
+  .hero-h1 { font-size: 2.4rem; }
+  .trust-bar-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1rem 0; }
+}
+
+/* ── UTILITY CLASSES ── */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.text-center { text-align: center; }
+.text-muted { color: var(--z-text-muted); }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.relative { position: relative; }
+.w-full { width: 100%; }
+.overflow-hidden { overflow: hidden; }
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- ===== LOADING SCREEN ===== -->
+<div id="loading">
+  <div class="loading-logo">ZAPTIX</div>
+  <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  <div class="loading-text">INITIALIZING_SYSTEM...</div>
+</div>
+
+<!-- ===== FIXED BACKGROUNDS ===== -->
+<div class="arcade-grid-bg"></div>
+<div class="scanlines-overlay"></div>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker" id="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">⚡ شحن مجاني على طلبات فوق 500 ج.م</span>
+    <span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">✅ دفع عند الاستلام متاح في كل مصر</span>
+    <span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">🔒 ضمان 6 أشهر على كل المنتجات</span>
+    <span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">🚀 توصيل 2-4 أيام عمل</span>
+    <span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">⚡ شحن مجاني على طلبات فوق 500 ج.م</span>
+    <span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">✅ دفع عند الاستلام متاح في كل مصر</span>
+    <span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">🔒 ضمان 6 أشهر على كل المنتجات</span>
+    <span class="ticker-item ticker-sep">///</span>
+    <span class="ticker-item">🚀 توصيل 2-4 أيام عمل</span>
+    <span class="ticker-item ticker-sep">///</span>
+  </div>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <!-- Logo -->
+      <a href="#" class="nav-logo" onclick="showPage('home')">
+        ZAPTIX
+        <span class="logo-dot"></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="nav-links">
+        <a class="nav-link active" onclick="showPage('home')" href="#">الرئيسية</a>
+        <div class="nav-categories-btn relative" id="cat-trigger">
+          الكولكشنات ▾
+          <div class="cat-dropdown" id="cat-dropdown">
+            <div class="cat-option" onclick="switchCategory('modern-tech')">
+              <div class="cat-icon">⚡</div>
+              <div class="cat-info">
+                <h4>Modern Tech</h4>
+                <p>أحدث إكسسوارات التكنولوجيا</p>
+              </div>
+            </div>
+            <div class="cat-option" onclick="switchCategory('old-tech')">
+              <div class="cat-icon">🕹️</div>
+              <div class="cat-info">
+                <h4>Old Tech Collection</h4>
+                <p>ريترو أركيد — كولكشن حصري</p>
+              </div>
+            </div>
+            <div class="cat-option disabled">
+              <div class="cat-icon">🎮</div>
+              <div class="cat-info">
+                <h4>Gaming Zone <span class="badge badge--blue" style="font-size:0.55rem">قريباً</span></h4>
+                <p>إكسسوارات الجيمرز الحقيقيين</p>
+              </div>
+            </div>
+            <div class="cat-option disabled">
+              <div class="cat-icon">👑</div>
+              <div class="cat-info">
+                <h4>Premium Collection <span class="badge badge--gold" style="font-size:0.55rem">قريباً</span></h4>
+                <p>فقط الأفضل</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="nav-link" onclick="showPage('shop')" href="#">المتجر</a>
+        <a class="nav-link" onclick="showPage('about')" href="#">من نحن</a>
+        <a class="nav-link" onclick="showPage('contact')" href="#">تواصل</a>
+        <a class="nav-link" onclick="showPage('track')" href="#">تتبع الطلب</a>
+      </div>
+
+      <!-- Search + Actions -->
+      <div class="nav-search-bar">
+        <span style="color:var(--z-text-subtle);font-size:1rem">🔍</span>
+        <input type="text" placeholder="ابحث عن منتج..." id="nav-search" oninput="handleSearch(this.value)">
+      </div>
+      <div class="nav-actions">
+        <button class="nav-action-btn" onclick="toggleWishlistPanel()" title="المفضلة">
+          ♡
+        </button>
+        <button class="nav-action-btn relative" onclick="openCart()" title="السلة">
+          🛒
+          <span class="nav-cart-count" id="cart-count">0</span>
+        </button>
+        <button class="mobile-menu-btn nav-action-btn" onclick="toggleMobileMenu()" id="mobile-btn">☰</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem">
+    <span class="nav-logo" style="font-size:1.3rem">ZAPTIX <span class="logo-dot"></span></span>
+    <button onclick="toggleMobileMenu()" style="color:var(--z-text-muted);font-size:1.2rem">✕</button>
+  </div>
+  <a class="mobile-nav-link" onclick="showPage('home');toggleMobileMenu()" href="#">
+    <span>🏠 الرئيسية</span> <span>›</span>
+  </a>
+  <a class="mobile-nav-link" onclick="switchCategory('modern-tech');toggleMobileMenu()" href="#">
+    <span>⚡ Modern Tech</span> <span>›</span>
+  </a>
+  <a class="mobile-nav-link" onclick="switchCategory('old-tech');toggleMobileMenu()" href="#">
+    <span>🕹️ Old Tech Collection</span> <span>›</span>
+  </a>
+  <a class="mobile-nav-link" onclick="showPage('shop');toggleMobileMenu()" href="#">
+    <span>🛍️ المتجر</span> <span>›</span>
+  </a>
+  <a class="mobile-nav-link" onclick="showPage('track');toggleMobileMenu()" href="#">
+    <span>📦 تتبع الطلب</span> <span>›</span>
+  </a>
+  <a class="mobile-nav-link" onclick="showPage('about');toggleMobileMenu()" href="#">
+    <span>ℹ️ من نحن</span> <span>›</span>
+  </a>
+  <a class="mobile-nav-link" onclick="showPage('contact');toggleMobileMenu()" href="#">
+    <span>💬 تواصل معنا</span> <span>›</span>
+  </a>
+  <div style="margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:0.75rem">
+    <a href="https://wa.me/201000000000" class="btn btn-whatsapp btn-full" target="_blank">
+      <span>💬</span> واتساب — اطلب الآن
+    </a>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT WRAPPER ===== -->
+<div id="pages">
+
+<!-- ============================================================
+     HOME PAGE
+     ============================================================ -->
+<div id="page-home">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-radial"></div>
+      <div class="hero-corner-accent hero-corner-accent--tl"></div>
+      <div class="hero-corner-accent hero-corner-accent--br"></div>
+    </div>
+    <div class="hero-frame"></div>
+    <div class="container hero-content">
+      <div class="hero-inner">
+        <!-- Left: Text -->
+        <div>
+          <div class="hero-eyebrow">
+            <div class="pixel-indicator">
+              <span class="pixel-dot"></span>
+              <span class="pixel-dot"></span>
+              <span class="pixel-dot"></span>
+            </div>
+            <div class="hero-status">
+              <span class="hero-status-dot"></span>
+              ZAPTIX.STORE — ONLINE
+            </div>
+          </div>
+          <h1 class="hero-h1">
+            <span>المستقبل</span>
+            <span class="line-accent">في إيدك</span>
+            <span class="line-outline">NOW</span>
+          </h1>
+          <p class="hero-tagline">
+            تكنولوجيا بريميوم. أسعار ذكية. توصيل سريع لكل مصر.<br>
+            من AirPods لباور بانك — كل حاجة محتاجها في مكان واحد.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn btn-primary btn-lg" onclick="showPage('shop')">
+              🛍️ تسوق الآن
+            </button>
+            <button class="btn btn-outline" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">
+              ← اكتشف المنتجات
+            </button>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-item"><span class="trust-icon">✅</span> دفع عند الاستلام</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="trust-icon">🔒</span> ضمان 6 شهور</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="trust-icon">🚀</span> توصيل سريع</div>
+            <div class="trust-divider"></div>
+            <div class="trust-item"><span class="trust-icon">↩️</span> استرجاع 7 أيام</div>
+          </div>
+        </div>
+        <!-- Right: Visual -->
+        <div class="hero-visual">
+          <div class="hero-product-ring">
+            <div class="hero-ring hero-ring-1">
+              <span class="ring-dot ring-dot-1"></span>
+              <span class="ring-dot ring-dot-3"></span>
+            </div>
+            <div class="hero-ring hero-ring-2">
+              <span class="ring-dot ring-dot-2"></span>
+              <span class="ring-dot ring-dot-4"></span>
+            </div>
+            <div class="hero-ring hero-ring-3"></div>
+            <div class="hero-product-center" id="hero-product-emoji">🎧</div>
+            <!-- Floating Stats -->
+            <div class="hero-stat hero-stat--tl">
+              <div class="stat-icon">⭐</div>
+              <div>
+                <div class="stat-val">4.9</div>
+                <div class="stat-label">+1847 تقييم</div>
+              </div>
+            </div>
+            <div class="hero-stat hero-stat--br">
+              <div class="stat-icon">🚀</div>
+              <div>
+                <div class="stat-val">24-48h</div>
+                <div class="stat-label">وقت التوصيل</div>
+              </div>
+            </div>
+            <div class="hero-stat hero-stat--tr">
+              <div class="stat-icon">🛡️</div>
+              <div>
+                <div class="stat-val">10K+</div>
+                <div class="stat-label">عميل سعيد</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="trust-bar-item">
+          <div class="trust-bar-icon">💰</div>
+          <div class="trust-bar-text">
+            <strong>دفع عند الاستلام</strong>
+            <span>COD — في كل مصر</span>
+          </div>
+        </div>
+        <div class="trust-bar-item">
+          <div class="trust-bar-icon">🚀</div>
+          <div class="trust-bar-text">
+            <strong>توصيل سريع</strong>
+            <span>2-4 أيام عمل</span>
+          </div>
+        </div>
+        <div class="trust-bar-item">
+          <div class="trust-bar-icon">🔒</div>
+          <div class="trust-bar-text">
+            <strong>ضمان أصلي</strong>
+            <span>6 شهور على كل المنتجات</span>
+          </div>
+        </div>
+        <div class="trust-bar-item">
+          <div class="trust-bar-icon">↩️</div>
+          <div class="trust-bar-text">
+            <strong>استرجاع سهل</strong>
+            <span>7 أيام بدون أسئلة</span>
+          </div>
+        </div>
+        <div class="trust-bar-item">
+          <div class="trust-bar-icon">💬</div>
+          <div class="trust-bar-text">
+            <strong>دعم 24/7</strong>
+            <span>واتساب فوري</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY SHOWCASE -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="section-eyebrow">الكولكشنات</div>
+      <div class="flex justify-between items-center mb-6" style="flex-wrap:wrap;gap:1rem">
+        <h2 class="section-title">اختار <span class="accent">عالمك</span></h2>
+        <p class="section-subtitle text-muted">كل كولكشن ليه تيمة وهوية بصرية مختلفة</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card cat-card--modern active" onclick="switchCategory('modern-tech')">
+          <div class="cat-card-bg"></div>
+          <span class="cat-card-icon">⚡</span>
+          <div class="cat-card-name">Modern Tech</div>
+          <div class="cat-card-desc">أحدث الإكسسوارات بتصميم Apple-inspired بريميوم</div>
+          <div class="cat-card-arrow" style="color:#0066FF">← استكشف</div>
+        </div>
+        <div class="cat-card cat-card--oldtech" onclick="switchCategory('old-tech')">
+          <div class="cat-card-bg"></div>
+          <span class="cat-card-icon">🕹️</span>
+          <div class="cat-card-name">Old Tech Collection</div>
+          <div class="cat-card-desc">تكنولوجيا ريترو أركيد — قطع حصرية ومحدودة</div>
+          <div class="badge badge--purple" style="margin-top:0.5rem;margin-bottom:0">HOT DROP</div>
+          <div class="cat-card-arrow" style="color:#B026FF">← استكشف</div>
+        </div>
+        <div class="cat-card cat-card--gaming cat-soon">
+          <span class="cat-card-icon">🎮</span>
+          <div class="cat-card-name">Gaming Zone</div>
+          <div class="cat-card-desc">إكسسوارات الجيمرز الحقيقيين — قريباً!</div>
+          <div class="badge badge--green" style="margin-top:0.5rem">COMING SOON</div>
+        </div>
+        <div class="cat-card cat-card--premium cat-soon">
+          <span class="cat-card-icon">👑</span>
+          <div class="cat-card-name">Premium Collection</div>
+          <div class="cat-card-desc">فقط للي بيحبوا الأفضل — قريباً!</div>
+          <div class="badge badge--gold" style="margin-top:0.5rem">COMING SOON</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section" id="featured">
+    <div class="container">
+      <div class="flex justify-between items-center mb-6 reveal" style="flex-wrap:wrap;gap:1rem">
+        <div>
+          <div class="section-eyebrow">الأكثر مبيعاً</div>
+          <h2 class="section-title">منتجات <span class="accent">مختارة</span></h2>
+        </div>
+        <button class="btn btn-ghost" onclick="showPage('shop')">عرض الكل ←</button>
+      </div>
+
+      <!-- Filter -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" onclick="filterProducts('all',this)">الكل</button>
+        <button class="filter-btn" onclick="filterProducts('modern-tech',this)">⚡ Modern Tech</button>
+        <button class="filter-btn" onclick="filterProducts('old-tech',this)">🕹️ Old Tech</button>
+        <button class="filter-btn" onclick="filterProducts('bestseller',this)">🔥 الأكثر مبيعاً</button>
+        <button class="filter-btn" onclick="filterProducts('new',this)">✨ جديد</button>
+      </div>
+
+      <div class="products-grid" id="featured-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ZAPTIX -->
+  <section class="section" style="background:rgba(255,255,255,0.015);border-top:1px solid var(--z-border);border-bottom:1px solid var(--z-border)">
+    <div class="container">
+      <div class="text-center mb-6 reveal">
+        <div class="section-eyebrow" style="justify-content:center">لماذا ZAPTIX</div>
+        <h2 class="section-title">نحن مش متجر عادي</h2>
+        <p class="section-subtitle text-muted" style="margin:0 auto">كل قرار بنخده موجه لراحتك ورضاك</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal stagger-1">
+          <div class="why-number">01</div>
+          <span class="why-icon">💰</span>
+          <div class="why-title">دفع عند الاستلام</div>
+          <div class="why-desc">مش محتاج تدفع قبل ما تشوف المنتج. بتدفع لما يوصلك — بسيطة وآمنة.</div>
+        </div>
+        <div class="why-card reveal stagger-2">
+          <div class="why-number">02</div>
+          <span class="why-icon">🔒</span>
+          <div class="why-title">ضمان حقيقي 6 شهور</div>
+          <div class="why-desc">مش كلام فاضي. كل منتج عنده ضمان حقيقي وسيرفيس بعد البيع مضمون.</div>
+        </div>
+        <div class="why-card reveal stagger-3">
+          <div class="why-number">03</div>
+          <span class="why-icon">🚀</span>
+          <div class="why-title">توصيل 2-4 أيام</div>
+          <div class="why-desc">بنتعامل مع أفضل شركات الشحن في مصر. أوردرك هيوصلك سريع وسليم.</div>
+        </div>
+        <div class="why-card reveal stagger-4">
+          <div class="why-number">04</div>
+          <span class="why-icon">⭐</span>
+          <div class="why-title">جودة مختارة</div>
+          <div class="why-desc">كل منتج بنعرضه بيعدي اختبار جودة عندنا. مش بنبيع أي حاجة مش مقتنعين بيها.</div>
+        </div>
+        <div class="why-card reveal stagger-5">
+          <div class="why-number">05</div>
+          <span class="why-icon">💬</span>
+          <div class="why-title">دعم عملاء حقيقي</div>
+          <div class="why-desc">فريق دعم بشري — مش بوتات. بنرد على واتساب في دقائق.</div>
+        </div>
+        <div class="why-card reveal stagger-6">
+          <div class="why-number">06</div>
+          <span class="why-icon">↩️</span>
+          <div class="why-title">استرجاع بدون مشاكل</div>
+          <div class="why-desc">7 أيام للاسترجاع الكامل. مش هنسألك ليه — رضاك أهم من أي بيع.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <section class="section">
+    <div class="container">
+      <div class="flex justify-between items-center mb-6 reveal" style="flex-wrap:wrap;gap:1rem">
+        <div>
+          <div class="section-eyebrow">🔥 الأكثر طلباً</div>
+          <h2 class="section-title">الناس <span class="accent">بتحبها</span></h2>
+        </div>
+      </div>
+      <div class="products-grid products-grid--3" id="bestsellers-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIAL OFFER -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="offer-banner">
+        <div style="position:relative;z-index:1">
+          <div class="badge badge--red badge--live" style="margin-bottom:1rem">⚡ عرض محدود الوقت</div>
+          <h2 class="offer-title">AirPods Pro 2 <span style="color:var(--cat-primary)">بسعر خيالي</span></h2>
+          <p class="offer-sub">نسخة Premium High Copy — جودة صوت استثنائية بثمن ذكي.<br>العرض ينتهي بعد:</p>
+          <div class="offer-countdown" id="countdown">
+            <div class="countdown-unit"><span class="countdown-num" id="cd-h">05</span><div class="countdown-label">ساعة</div></div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-m">47</span><div class="countdown-label">دقيقة</div></div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-s">33</span><div class="countdown-label">ثانية</div></div>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap">
+            <button class="btn btn-primary btn-lg" onclick="addToCart(1)">🛒 اضف للسلة الآن</button>
+            <a href="https://wa.me/201000000000?text=عايز%20أطلب%20AirPods%20Pro%202" class="btn btn-whatsapp" target="_blank">💬 اطلب واتساب</a>
+          </div>
+        </div>
+        <div class="offer-product-display">
+          <span class="offer-emoji">🎧</span>
+          <div class="offer-price-new">1,299 ج.م</div>
+          <div class="offer-price-old">1,799 ج.م</div>
+          <div class="offer-discount-tag">وفر 500 ج.م</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" style="background:rgba(255,255,255,0.015);border-top:1px solid var(--z-border);border-bottom:1px solid var(--z-border)">
+    <div class="container">
+      <div class="text-center mb-6 reveal">
+        <div class="section-eyebrow" style="justify-content:center">آراء العملاء</div>
+        <h2 class="section-title">الكلام ده <span class="accent">مش إحنا بنقوله</span></h2>
+        <p class="section-subtitle text-muted" style="margin:0 auto">+10,000 عميل سعيد — تقييم 4.9 من 5</p>
+      </div>
+      <div class="reviews-grid" id="reviews-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section reveal" id="faq-section">
+    <div class="container">
+      <div class="text-center mb-6">
+        <div class="section-eyebrow" style="justify-content:center">أسئلة شائعة</div>
+        <h2 class="section-title">عندك <span class="accent">سؤال؟</span></h2>
+      </div>
+      <div class="faq-list" id="faq-list">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="text-center mt-4">
+        <p class="text-muted" style="margin-bottom:1rem">لسه عندك سؤال؟</p>
+        <a href="https://wa.me/201000000000" class="btn btn-whatsapp" target="_blank">💬 كلمنا على واتساب</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-home -->
+
+<!-- ============================================================
+     SHOP PAGE
+     ============================================================ -->
+<div id="page-shop" class="hidden">
+  <div class="page-hero">
+    <div class="hero-radial"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-eyebrow">المتجر الكامل</div>
+      <h1 class="page-title">كل <span style="color:var(--cat-primary)">المنتجات</span></h1>
+      <p class="text-muted mt-2" style="font-size:0.95rem">اختار من كولكشن ZAPTIX الكاملة</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <!-- Search + Sort -->
+      <div class="flex justify-between items-center mb-6" style="flex-wrap:wrap;gap:1rem">
+        <div class="filter-bar" style="margin-bottom:0">
+          <button class="filter-btn active" onclick="filterProducts('all',this,'shop-grid')">الكل</button>
+          <button class="filter-btn" onclick="filterProducts('modern-tech',this,'shop-grid')">⚡ Modern Tech</button>
+          <button class="filter-btn" onclick="filterProducts('old-tech',this,'shop-grid')">🕹️ Old Tech</button>
+          <button class="filter-btn" onclick="filterProducts('bestseller',this,'shop-grid')">🔥 الأكثر مبيعاً</button>
+          <button class="filter-btn" onclick="filterProducts('new',this,'shop-grid')">✨ جديد</button>
+        </div>
+        <div class="nav-search-bar" style="width:240px;display:flex">
+          <span style="color:var(--z-text-subtle)">🔍</span>
+          <input type="text" placeholder="ابحث..." oninput="handleSearch(this.value,'shop-grid')">
+        </div>
+      </div>
+      <div class="products-grid" id="shop-grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     ABOUT PAGE
+     ============================================================ -->
+<div id="page-about" class="hidden">
+  <div class="page-hero">
+    <div class="hero-radial"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-eyebrow">من نحن</div>
+      <h1 class="page-title">قصة <span style="color:var(--cat-primary)">ZAPTIX</span></h1>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container" style="max-width:800px;margin:0 auto">
+      <div class="card" style="padding:3rem;margin-bottom:2rem">
+        <h2 style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:1.25rem;color:var(--cat-primary)">مش متجر عادي</h2>
+        <p style="color:var(--z-text-muted);line-height:2;font-size:1rem;margin-bottom:1.25rem">
+          ZAPTIX اتأسست بهدف واحد بسيط: إن كل محب تكنولوجيا في مصر يقدر يحصل على إكسسوارات بريميوم بأسعار ذكية وخدمة استثنائية.
+        </p>
+        <p style="color:var(--z-text-muted);line-height:2;font-size:1rem;margin-bottom:1.25rem">
+          بنؤمن إن التكنولوجيا مش رفاهية — هي أسلوب حياة. ولذلك بنختار كل منتج بعناية فائقة عشان يكون يستاهل ثقتك وفلوسك.
+        </p>
+        <p style="color:var(--z-text-muted);line-height:2;font-size:1rem">
+          من AirPods للباور بانك للشواحن السريعة — كل حاجة عندنا بتعدي اختبار جودة حقيقي قبل ما توصلك.
+        </p>
+      </div>
+      <div class="why-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="why-card text-center" style="text-align:center">
+          <span class="why-icon">10K+</span>
+          <div class="why-title">عميل سعيد</div>
+        </div>
+        <div class="why-card text-center" style="text-align:center">
+          <span class="why-icon">4.9⭐</span>
+          <div class="why-title">متوسط التقييم</div>
+        </div>
+        <div class="why-card text-center" style="text-align:center">
+          <span class="why-icon">6ش</span>
+          <div class="why-title">ضمان كل منتج</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     CONTACT PAGE
+     ============================================================ -->
+<div id="page-contact" class="hidden">
+  <div class="page-hero">
+    <div class="hero-radial"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-eyebrow">تواصل معنا</div>
+      <h1 class="page-title">إحنا <span style="color:var(--cat-primary)">هنا</span></h1>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container" style="max-width:700px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem">
+        <a href="https://wa.me/201000000000" class="card" style="padding:2rem;text-align:center;text-decoration:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:0.75rem;transition:all 0.3s" target="_blank">
+          <span style="font-size:2.5rem">💬</span>
+          <div style="font-family:var(--font-ui);font-weight:700">واتساب</div>
+          <div style="font-size:0.82rem;color:var(--z-text-muted)">أسرع طريقة للتواصل<br>بنرد في دقائق</div>
+          <div class="btn btn-whatsapp btn-sm" style="margin-top:0.5rem">إبدأ محادثة</div>
+        </a>
+        <a href="https://m.me/zaptix" class="card" style="padding:2rem;text-align:center;text-decoration:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:0.75rem;transition:all 0.3s" target="_blank">
+          <span style="font-size:2.5rem">📘</span>
+          <div style="font-family:var(--font-ui);font-weight:700">ماسنجر</div>
+          <div style="font-size:0.82rem;color:var(--z-text-muted)">تواصل عبر فيسبوك<br>متاحين 7 أيام الأسبوع</div>
+          <div class="btn btn-ghost btn-sm" style="margin-top:0.5rem">كلمنا</div>
+        </a>
+      </div>
+      <div class="card" style="padding:2rem">
+        <h3 style="font-family:var(--font-ui);font-weight:700;margin-bottom:1.5rem">اوعى تتردد</h3>
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--z-surface);border-radius:var(--r-md);border:1px solid var(--z-border)">
+            <span style="font-size:1.4rem">📱</span>
+            <div>
+              <div style="font-size:0.75rem;color:var(--z-text-muted);font-family:var(--font-mono)">واتساب / تليفون</div>
+              <div style="font-weight:600">+20 100 000 0000</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--z-surface);border-radius:var(--r-md);border:1px solid var(--z-border)">
+            <span style="font-size:1.4rem">📧</span>
+            <div>
+              <div style="font-size:0.75rem;color:var(--z-text-muted);font-family:var(--font-mono)">إيميل</div>
+              <div style="font-weight:600">support@zaptix.eg</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--z-surface);border-radius:var(--r-md);border:1px solid var(--z-border)">
+            <span style="font-size:1.4rem">🕒</span>
+            <div>
+              <div style="font-size:0.75rem;color:var(--z-text-muted);font-family:var(--font-mono)">ساعات العمل</div>
+              <div style="font-weight:600">السبت - الخميس: 10 ص - 10 م</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     TRACK ORDER PAGE
+     ============================================================ -->
+<div id="page-track" class="hidden">
+  <div class="page-hero">
+    <div class="hero-radial"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-eyebrow">تتبع الطلب</div>
+      <h1 class="page-title">وين <span style="color:var(--cat-primary)">طلبك؟</span></h1>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container" style="max-width:560px;margin:0 auto">
+      <div class="card" style="padding:2.5rem;text-align:center">
+        <span style="font-size:3.5rem;display:block;margin-bottom:1.5rem">📦</span>
+        <p style="color:var(--z-text-muted);margin-bottom:2rem;line-height:1.8">ادخل رقم طلبك أو رقم تليفونك وهنوريلك مكان الطلب فين</p>
+        <input type="text" placeholder="رقم الطلب أو رقم التليفون" id="track-input"
+          style="width:100%;background:var(--z-surface);border:1px solid var(--z-border);border-radius:var(--r-md);padding:0.9rem 1.25rem;color:var(--z-text);font-size:0.95rem;outline:none;margin-bottom:1rem;font-family:var(--font-arabic);text-align:center">
+        <button class="btn btn-primary btn-full" onclick="trackOrder()">🔍 تتبع الطلب</button>
+        <div id="track-result" style="margin-top:1.5rem;display:none"></div>
+        <div class="pixel-divider" style="margin:1.5rem 0"></div>
+        <p style="font-size:0.85rem;color:var(--z-text-muted)">أو تواصل معنا مباشرة:</p>
+        <a href="https://wa.me/201000000000" class="btn btn-whatsapp btn-full" style="margin-top:0.75rem" target="_blank">💬 واتساب للاستفسار</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     WISHLIST PAGE
+     ============================================================ -->
+<div id="page-wishlist" class="hidden">
+  <div class="page-hero">
+    <div class="hero-radial"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-eyebrow">المفضلة</div>
+      <h1 class="page-title">قائمة <span style="color:var(--cat-primary)">الأمنيات</span></h1>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="products-grid" id="wishlist-grid">
+        <!-- Rendered by JS -->
+      </div>
+      <div id="wishlist-empty" style="text-align:center;padding:4rem;display:none">
+        <span style="font-size:4rem;display:block;margin-bottom:1rem">♡</span>
+        <p style="color:var(--z-text-muted)">مفضلتك فاضية — ابدأ بإضافة منتجات!</p>
+        <button class="btn btn-primary" style="margin-top:1rem" onclick="showPage('shop')">تصفح المتجر</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     CHECKOUT PAGE
+     ============================================================ -->
+<div id="page-checkout" class="hidden">
+  <div class="page-hero">
+    <div class="hero-radial"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-eyebrow">الدفع</div>
+      <h1 class="page-title">إتمام <span style="color:var(--cat-primary)">الطلب</span></h1>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container" style="max-width:900px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:start" id="checkout-inner">
+        <!-- Form -->
+        <div>
+          <!-- COD Banner -->
+          <div style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);border-radius:var(--r-md);padding:1rem 1.25rem;margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem">
+            <span style="font-size:1.5rem">✅</span>
+            <div>
+              <div style="font-weight:700;color:#39FF14;font-size:0.9rem">دفع عند الاستلام (COD)</div>
+              <div style="font-size:0.8rem;color:var(--z-text-muted)">مش محتاج تدفع دلوقتي — بتدفع لما يوصلك الأوردر</div>
+            </div>
+          </div>
+          <div class="card" style="padding:2rem">
+            <h3 style="font-family:var(--font-ui);font-weight:700;margin-bottom:1.5rem">بيانات الشحن</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+              <div>
+                <label style="font-size:0.8rem;color:var(--z-text-muted);display:block;margin-bottom:0.4rem">الاسم الأول *</label>
+                <input type="text" id="co-fname" placeholder="أحمد" class="checkout-input">
+              </div>
+              <div>
+                <label style="font-size:0.8rem;color:var(--z-text-muted);display:block;margin-bottom:0.4rem">اسم العائلة *</label>
+                <input type="text" id="co-lname" placeholder="محمد" class="checkout-input">
+              </div>
+            </div>
+            <div style="margin-bottom:1rem">
+              <label style="font-size:0.8rem;color:var(--z-text-muted);display:block;margin-bottom:0.4rem">رقم التليفون *</label>
+              <input type="tel" id="co-phone" placeholder="01XXXXXXXXX" class="checkout-input" dir="ltr">
+            </div>
+            <div style="margin-bottom:1rem">
+              <label style="font-size:0.8rem;color:var(--z-text-muted);display:block;margin-bottom:0.4rem">المحافظة *</label>
+              <select id="co-gov" class="checkout-input">
+                <option value="">اختر المحافظة</option>
+                <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
+                <option>الشرقية</option><option>القليوبية</option><option>المنوفية</option>
+                <option>الغربية</option><option>كفر الشيخ</option><option>دمياط</option>
+                <option>الدقهلية</option><option>البحيرة</option><option>الإسماعيلية</option>
+                <option>بورسعيد</option><option>السويس</option><option>الفيوم</option>
+                <option>بني سويف</option><option>المنيا</option><option>أسيوط</option>
+                <option>سوهاج</option><option>قنا</option><option>الأقصر</option><option>أسوان</option>
+                <option>البحر الأحمر</option><option>الوادي الجديد</option><option>مطروح</option>
+                <option>شمال سيناء</option><option>جنوب سيناء</option>
+              </select>
+            </div>
+            <div style="margin-bottom:1rem">
+              <label style="font-size:0.8rem;color:var(--z-text-muted);display:block;margin-bottom:0.4rem">العنوان التفصيلي *</label>
+              <textarea id="co-address" placeholder="الشارع، رقم المبنى، الدور، رقم الشقة" class="checkout-input" rows="3"></textarea>
+            </div>
+            <div style="margin-bottom:1rem">
+              <label style="font-size:0.8rem;color:var(--z-text-muted);display:block;margin-bottom:0.4rem">ملاحظات (اختياري)</label>
+              <textarea id="co-notes" placeholder="أي تعليمات خاصة للتوصيل..." class="checkout-input" rows="2"></textarea>
+            </div>
+            <!-- Discount Code -->
+            <div style="display:flex;gap:0.75rem;margin-top:0.5rem">
+              <input type="text" id="co-discount" placeholder="كود الخصم (اختياري)" class="checkout-input" style="flex:1">
+              <button class="btn btn-ghost" onclick="applyDiscount()">تفعيل</button>
+            </div>
+            <div id="discount-msg" style="margin-top:0.5rem;font-size:0.82rem;display:none"></div>
+          </div>
+        </div>
+        <!-- Order Summary -->
+        <div>
+          <div class="card" style="padding:1.75rem;position:sticky;top:80px">
+            <h3 style="font-family:var(--font-ui);font-weight:700;margin-bottom:1.25rem">ملخص الطلب</h3>
+            <div id="checkout-items" style="margin-bottom:1.25rem"></div>
+            <div class="pixel-divider"></div>
+            <div style="margin:1rem 0;display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem">
+              <div style="display:flex;justify-content:space-between">
+                <span style="color:var(--z-text-muted)">المجموع</span>
+                <span id="co-subtotal">0 ج.م</span>
+              </div>
+              <div style="display:flex;justify-content:space-between" id="co-discount-row" style="display:none">
+                <span style="color:#39FF14">خصم</span>
+                <span style="color:#39FF14" id="co-discount-val">0 ج.م</span>
+              </div>
+              <div style="display:flex;justify-content:space-between">
+                <span style="color:var(--z-text-muted)">الشحن</span>
+                <span style="color:#39FF14">مجاني 🎉</span>
+              </div>
+            </div>
+            <div class="pixel-divider"></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem;margin-bottom:1.5rem">
+              <span style="font-family:var(--font-ui);font-weight:700">الإجمالي</span>
+              <span style="font-family:var(--font-display);font-size:1.5rem;color:var(--cat-primary)" id="co-total">0 ج.م</span>
+            </div>
+            <div class="cart-cod-note" style="margin-bottom:1rem">
+              ✅ الدفع عند الاستلام — مش محتاج تدفع دلوقتي
+            </div>
+            <button class="btn btn-primary btn-full btn-lg" onclick="placeOrder()">
+              🚀 تأكيد الطلب
+            </button>
+            <a href="https://wa.me/201000000000" class="btn btn-whatsapp btn-full" style="margin-top:0.75rem" target="_blank">
+              💬 اطلب عبر واتساب
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     ORDER SUCCESS PAGE
+     ============================================================ -->
+<div id="page-success" class="hidden">
+  <section class="section" style="min-height:80vh;display:flex;align-items:center">
+    <div class="container" style="max-width:560px;margin:0 auto;text-align:center">
+      <div class="hero-radial"></div>
+      <div style="font-size:5rem;display:block;margin-bottom:1.5rem;animation:productFloat 3s ease-in-out infinite">🎉</div>
+      <h1 style="font-family:var(--font-display);font-size:2.5rem;font-weight:900;margin-bottom:1rem">
+        تم الطلب <span style="color:var(--cat-primary)">بنجاح!</span>
+      </h1>
+      <p style="color:var(--z-text-muted);line-height:1.8;margin-bottom:2rem">
+        شكراً ليك! هنتواصل معاك على التليفون خلال 24 ساعة لتأكيد الطلب.<br>
+        رقم طلبك: <span style="font-family:var(--font-mono);color:var(--cat-primary)" id="order-num">#000000</span>
+      </p>
+      <div style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:2rem">
+        <div style="font-size:0.9rem;color:#39FF14;font-weight:600">✅ الدفع عند الاستلام</div>
+        <div style="font-size:0.82rem;color:var(--z-text-muted);margin-top:0.4rem">مش محتاج تدفع حاجة دلوقتي</div>
+      </div>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="showPage('home')">العودة للرئيسية</button>
+        <a href="https://wa.me/201000000000" class="btn btn-whatsapp" target="_blank">💬 تواصل معنا</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+</div><!-- end #pages -->
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div>
+        <div class="footer-brand-logo">ZAPTIX <span class="logo-dot"></span></div>
+        <p class="footer-desc">تكنولوجيا بريميوم. أسعار ذكية. توصيل سريع لكل مصر. الهدف الواحد: رضاك.</p>
+        <div class="footer-social">
+          <a href="https://facebook.com/zaptix" class="social-btn" target="_blank">f</a>
+          <a href="https://instagram.com/zaptix" class="social-btn" target="_blank">ig</a>
+          <a href="https://tiktok.com/@zaptix" class="social-btn" target="_blank">tt</a>
+          <a href="https://wa.me/201000000000" class="social-btn" target="_blank">wa</a>
+        </div>
+      </div>
+      <!-- Links -->
+      <div>
+        <div class="footer-col-title">الكولكشنات</div>
+        <div class="footer-links">
+          <a class="footer-link" onclick="switchCategory('modern-tech')" href="#">⚡ Modern Tech</a>
+          <a class="footer-link" onclick="switchCategory('old-tech')" href="#">🕹️ Old Tech Collection</a>
+          <a class="footer-link" href="#">🎮 Gaming Zone (قريباً)</a>
+          <a class="footer-link" href="#">👑 Premium Collection (قريباً)</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">خدمة العملاء</div>
+        <div class="footer-links">
+          <a class="footer-link" onclick="showPage('track')" href="#">📦 تتبع الطلب</a>
+          <a class="footer-link" onclick="showPage('contact')" href="#">💬 تواصل معنا</a>
+          <a class="footer-link" href="#faq-section" onclick="showPage('home')">❓ أسئلة شائعة</a>
+          <a class="footer-link" href="#">↩️ سياسة الاسترجاع</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">اتواصل معانا</div>
+        <div class="footer-links">
+          <a href="https://wa.me/201000000000" class="footer-link" target="_blank">💬 واتساب: 01000000000</a>
+          <a href="mailto:support@zaptix.eg" class="footer-link">📧 support@zaptix.eg</a>
+          <span class="footer-link">📍 القاهرة، مصر</span>
+          <span class="footer-link">🕒 السبت-الخميس: 10ص-10م</span>
+        </div>
+        <div style="margin-top:1.5rem">
+          <a href="https://wa.me/201000000000" class="btn btn-whatsapp btn-sm btn-full" target="_blank">💬 اطلب دلوقتي</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2024 ZAPTIX // ALL_RIGHTS_RESERVED // CAIRO_EG</span>
+      <div class="footer-payment">
+        <span class="payment-badge">COD</span>
+        <span class="payment-badge">VISA</span>
+        <span class="payment-badge">INSTAPAY</span>
+        <span class="payment-badge">VODAFONE</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== CART SIDEBAR ===== -->
+<div id="cart-overlay" onclick="closeCart()"></div>
+<div id="cart-sidebar">
+  <div class="cart-head">
+    <div class="cart-title">السلة 🛒</div>
+    <button onclick="closeCart()" style="color:var(--z-text-muted);font-size:1.1rem;transition:color 0.2s" onmouseover="this.style.color='var(--z-text)'" onmouseout="this.style.color='var(--z-text-muted)'">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty" id="cart-empty">
+      <span class="cart-empty-icon">🛒</span>
+      <p>السلة فاضية</p>
+      <button class="btn btn-ghost" style="margin-top:1rem" onclick="closeCart();showPage('shop')">تسوق الآن</button>
+    </div>
+  </div>
+  <div class="cart-foot" id="cart-foot" style="display:none">
+    <div class="cart-subtotal">
+      <span>المجموع</span>
+      <span id="cart-subtotal-val">0 ج.م</span>
+    </div>
+    <div class="cart-total">
+      <span class="cart-total-label">الإجمالي</span>
+      <span class="cart-total-val" id="cart-total-val">0 ج.م</span>
+    </div>
+    <div class="cart-cod-note">✅ دفع عند الاستلام — مش محتاج تدفع دلوقتي</div>
+    <button class="btn btn-primary btn-full" style="margin-bottom:0.6rem" onclick="closeCart();showPage('checkout');renderCheckout()">
+      🚀 إتمام الطلب
+    </button>
+    <a href="https://wa.me/201000000000" class="btn btn-whatsapp btn-full" target="_blank">
+      💬 اطلب عبر واتساب
+    </a>
+  </div>
+</div>
+
+<!-- ===== PRODUCT MODAL ===== -->
+<div id="product-modal-overlay" onclick="closeModal(event)">
+  <div id="product-modal">
+    <!-- Rendered by JS -->
+  </div>
+</div>
+
+<!-- ===== FLOATING ACTION BUTTONS ===== -->
+<div class="fab-group">
+  <a href="https://wa.me/201000000000?text=مرحباً، أريد الاستفسار عن منتج" class="fab fab--whatsapp" target="_blank" title="واتساب">💬</a>
+  <a href="https://m.me/zaptix" class="fab fab--messenger" target="_blank" title="ماسنجر">📘</a>
+</div>
+
+<!-- Back to top -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- ===== TOAST CONTAINER ===== -->
+<div id="toast-container"></div>
+
+<!-- ===== EXIT POPUP ===== -->
+<div id="exit-popup">
+  <div class="exit-modal">
+    <button onclick="document.getElementById('exit-popup').classList.remove('show')" style="position:absolute;top:1rem;left:1rem;color:var(--z-text-muted);cursor:pointer;font-size:1rem;background:none;border:none">✕</button>
+    <span class="exit-emoji">😱</span>
+    <h2 class="exit-title">وين رايح؟!</h2>
+    <p class="exit-sub">خليلك هدية منا — خصم <strong style="color:var(--cat-primary)">15%</strong> على أول طلب باستخدام الكود:</p>
+    <div class="exit-code-box" onclick="copyExitCode()" title="اضغط للنسخ">ZAPTIX15</div>
+    <button class="btn btn-primary btn-full" onclick="document.getElementById('exit-popup').classList.remove('show');showPage('shop')">
+      🛍️ تسوق بالخصم دلوقتي
+    </button>
+    <span class="exit-dismiss" onclick="document.getElementById('exit-popup').classList.remove('show')">مش محتاجه دلوقتي</span>
+  </div>
+</div>
+
+<!-- CHECKOUT INPUT STYLES (inline) -->
+<style>
+.checkout-input {
+  width: 100%; background: var(--z-surface); border: 1px solid var(--z-border);
+  border-radius: var(--r-md); padding: 0.85rem 1rem; color: var(--z-text);
+  font-size: 0.9rem; font-family: var(--font-arabic); outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.checkout-input:focus {
+  border-color: var(--cat-primary);
+  box-shadow: 0 0 0 3px var(--cat-glow);
+}
+.checkout-input::placeholder { color: var(--z-text-subtle); }
+select.checkout-input option { background: var(--z-surface-2); }
+</style>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ============================================================
+// ZAPTIX — COMPLETE JAVASCRIPT ENGINE
+// ============================================================
+
+// ── DATA ──
+const PRODUCTS = [
+  { id:1, name:"AirPods Pro 2 — High Copy Premium", nameShort:"AirPods Pro 2", category:"modern-tech", price:1299, oldPrice:1799, stock:15, emoji:"🎧", badge:"الأكثر مبيعاً", badgeColor:"blue", featured:true, bestseller:true, new:false,
+    desc:"نويز كانسيلينج نشط حقيقي، صوت HiFi نقي، شحن لاسلكي، مقاومة ماء IPX4.",
+    features:["نويز كانسيلينج نشط (ANC)","صوت HiFi 9.9mm driver","شحن لاسلكي","بطارية 30 ساعة","مقاومة ماء IPX4","بلوتوث 5.3"],
+    rating:4.9, reviews:1247 },
+  { id:2, name:"باور بانك Turbo 20000mAh — شحن 65W", nameShort:"Turbo Power Bank 20K", category:"modern-tech", price:799, oldPrice:1099, stock:30, emoji:"🔋", badge:"الأكثر طلباً", badgeColor:"orange", featured:true, bestseller:true, new:false,
+    desc:"شحن GaN 65W. 20,000 mAh. يشحن اللاب توب والموبايل في نفس الوقت.",
+    features:["سعة 20,000mAh","شحن سريع 65W GaN","USB-C + USB-A","شاشة LED","يشحن اللاب توب"],
+    rating:4.8, reviews:892 },
+  { id:3, name:"شاحن GaN 100W — 4 منافذ", nameShort:"GaN Charger 100W", category:"modern-tech", price:549, oldPrice:749, stock:25, emoji:"⚡", badge:"جديد", badgeColor:"green", featured:true, bestseller:false, new:true,
+    desc:"شاحن GaN ذكي 100W بـ4 منافذ. اشحن كل أجهزتك في وقت واحد.",
+    features:["GaN Technology 100W","4 منافذ (2 USB-C + 2 USB-A)","PD 3.0 + QC 4.0","Universal Voltage"],
+    rating:4.8, reviews:428 },
+  { id:4, name:"كابل Titan USB-C — 240W", nameShort:"Titan Cable 240W", category:"modern-tech", price:199, oldPrice:279, stock:50, emoji:"🔌", badge:"", badgeColor:"", featured:false, bestseller:true, new:false,
+    desc:"240W شحن سريع. 40Gbps نقل بيانات. Nylon مضفر يتحمل 30,000 ثنية.",
+    features:["240W Super Fast Charge","40 Gbps Data Transfer","Nylon Braided","USB 4.0"],
+    rating:4.9, reviews:1891 },
+  { id:5, name:"AirPods Retro Arcade Edition", nameShort:"Retro Arcade AirPods", category:"old-tech", price:899, oldPrice:1199, stock:8, emoji:"🎮", badge:"RARE DROP", badgeColor:"purple", featured:true, bestseller:false, new:true,
+    desc:"نسخة حصرية ريترو أركيد. RGB Glow Effect. Limited 100 قطعة فقط.",
+    features:["تصميم Retro Arcade حصري","نويز كانسيلينج","RGB Glow Effect","بطارية 28 ساعة","Limited 100 قطعة"],
+    rating:5, reviews:47, limitedEdition:true },
+  { id:6, name:"الباور بانك الريترو — CRT Edition", nameShort:"CRT Power Bank", category:"old-tech", price:699, oldPrice:999, stock:12, emoji:"📺", badge:"LIMITED", badgeColor:"neon", featured:true, bestseller:false, new:true,
+    desc:"تصميم مستوحى من شاشات CRT. شاشة ريترو مضيئة. RGB Breathing Effect.",
+    features:["تصميم CRT Monitor كلاسيكي","Retro LED Display","15,000mAh","شحن 45W","RGB Breathing"],
+    rating:4.9, reviews:89 },
+  { id:7, name:"كفر iPhone — Pixel Grid Series", nameShort:"Pixel Grid iPhone Case", category:"old-tech", price:249, oldPrice:349, stock:40, emoji:"📱", badge:"تريند", badgeColor:"orange", featured:false, bestseller:true, new:false,
+    desc:"تصميم Pixel Grid ريترو. Military Grade. متاح لـ iPhone 13/14/15.",
+    features:["تصميم Pixel Grid","Military Grade","iPhone 13/14/15","TPU + PC مزدوجة"],
+    rating:4.7, reviews:312 },
+  { id:8, name:"ساعة ذكية Quantum Pro", nameShort:"Quantum Smart Watch", category:"modern-tech", price:1099, oldPrice:1499, stock:20, emoji:"⌚", badge:"جديد", badgeColor:"blue", featured:true, bestseller:false, new:true,
+    desc:"AMOLED 1.96 بوصة. قياس ضربات القلب والأكسجين. GPS مستقل. بطارية 14 يوم.",
+    features:["AMOLED 1.96 بوصة","GPS مستقل","مقاومة ماء 5ATM","بطارية 14 يوم","100+ رياضة"],
+    rating:4.8, reviews:156 }
+];
+
+const REVIEWS_DATA = [
+  { name:"أحمد محمد", location:"القاهرة", avatar:"🧑", rating:5, text:"AirPods دي غيرت حياتي! الصوت خرافي والبطارية مديتنيش. أفضل شراء عملته", product:"AirPods Pro 2", verified:true },
+  { name:"سارة علي", location:"الإسكندرية", avatar:"👩", rating:5, text:"الباور بانك بيشحن لاب توبي في أقل من ساعة! تقيل بس يستاهل كل جنيه", product:"Turbo Power Bank", verified:true },
+  { name:"محمود خالد", location:"الجيزة", avatar:"🧔", rating:5, text:"ريترو أركيد AirPods دي piece of art! الكل بيسأل عليها. وصلت في يومين بالظبط", product:"Retro Arcade AirPods", verified:true },
+  { name:"نور حسن", location:"المنصورة", avatar:"👩‍💼", rating:5, text:"الشاحن GaN اشتريت 2 واحدة للشغل وواحدة للبيت. خدمة العملاء زي الفل", product:"GaN Charger 100W", verified:true },
+  { name:"عمر سامي", location:"أسيوط", avatar:"👨‍💻", rating:5, text:"كابل Titan — عمره ما هيتكسر ده مش كابل ده سلاح! وسعره بجد منطقي", product:"Titan Cable 240W", verified:true },
+  { name:"ياسمين فاروق", location:"طنطا", avatar:"👩‍🎓", rating:5, text:"ZAPTIX غيروا تجربة الشراء أونلاين. الدفع عند الاستلام خلاني مرتاحة جداً", product:"AirPods Pro 2", verified:true }
+];
+
+const FAQS = [
+  { q:"هل الدفع عند الاستلام متاح؟", a:"أيوه! الدفع عند الاستلام (COD) متاح في كل محافظات مصر. مش هتدفع حاجة قبل ما تشوف الأوردر بعينيك." },
+  { q:"قد إيه هياخد التوصيل؟", a:"توصيل خلال 2-4 أيام عمل لكل محافظات مصر. القاهرة والجيزة غالباً في يومين." },
+  { q:"منتجاتكم أصلية ولا هاي كوبي؟", a:"بنوضح نوع كل منتج في الوصف. AirPods Pro 2 هي High Copy Premium — جودة صوت ممتازة بسعر ذكي. دايماً صادقين مع عملاءنا." },
+  { q:"إيه هو الضمان؟", a:"6 شهور ضمان على كل المنتجات ضد عيوب التصنيع. في حالة أي مشكلة، بنستبدل أو بنرجعلك فلوسك." },
+  { q:"أقدر أرجع المنتج؟", a:"طبعاً! 7 أيام لإرجاع أي منتج بدون أي أسئلة. المنتج بس لازم يكون في حالته الأصلية." },
+  { q:"إيه هو سعر الشحن؟", a:"شحن مجاني على أوردرات فوق 500 ج.م. تحت كده، رسوم شحن 60 ج.م فقط." },
+  { q:"أزاي أتواصل معاكم؟", a:"واتساب هو أسرع طريقة: 01000000000. بنرد في خلال دقائق. كمان تقدر تتواصل عبر ماسنجر أو الإيميل." }
+];
+
+// ── STATE ──
+let cart = JSON.parse(localStorage.getItem('zaptix_cart') || '[]');
+let wishlist = JSON.parse(localStorage.getItem('zaptix_wishlist') || '[]');
+let currentPage = 'home';
+let currentCategory = 'modern-tech';
+let discountPercent = 0;
+let exitShown = false;
+
+// ── INIT ──
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.getElementById('loading').classList.add('hidden');
+  }, 1500);
+
+  renderFeaturedProducts();
+  renderBestsellers();
+  renderReviews();
+  renderFAQ();
+  updateCartUI();
+  initScrollReveal();
+  initCountdown();
+  initNavScroll();
+  initExitIntent();
+  initCategoryDropdown();
+  initShopGrid();
+  updateWishlistPage();
+});
+
+// ── CATEGORY SWITCHING ──
+function switchCategory(catId) {
+  currentCategory = catId;
+  document.getElementById('cat-dropdown').classList.remove('open');
+
+  const catData = {
+    'modern-tech': {
+      primary: '#0066FF', secondary: '#00CFFF', glow: 'rgba(0,102,255,0.5)',
+      gradient: 'linear-gradient(135deg,#0066FF,#00CFFF)',
+      border: 'rgba(0,102,255,0.25)', textAccent: '#60A5FA',
+      heroEmoji: '🎧', bodyClass: ''
+    },
+    'old-tech': {
+      primary: '#B026FF', secondary: '#39FF14', glow: 'rgba(176,38,255,0.5)',
+      gradient: 'linear-gradient(135deg,#B026FF,#39FF14)',
+      border: 'rgba(176,38,255,0.3)', textAccent: '#B026FF',
+      heroEmoji: '🕹️', bodyClass: 'old-tech-active'
+    }
+  };
+
+  const cat = catData[catId] || catData['modern-tech'];
+  const root = document.documentElement;
+  root.style.setProperty('--cat-primary', cat.primary);
+  root.style.setProperty('--cat-secondary', cat.secondary);
+  root.style.setProperty('--cat-glow', cat.glow);
+  root.style.setProperty('--cat-gradient', cat.gradient);
+  root.style.setProperty('--cat-border', cat.border);
+  root.style.setProperty('--cat-text-accent', cat.textAccent);
+
+  document.body.className = cat.bodyClass;
+
+  const heroEl = document.getElementById('hero-product-emoji');
+  if (heroEl) {
+    heroEl.style.transform = 'scale(0.8)';
+    heroEl.style.opacity = '0';
+    setTimeout(() => {
+      heroEl.textContent = cat.heroEmoji;
+      heroEl.style.transform = '';
+      heroEl.style.opacity = '1';
+      heroEl.style.transition = 'all 0.3s';
+    }, 200);
+  }
+
+  showToast(`تم التبديل إلى ${catId === 'old-tech' ? '🕹️ Old Tech Collection' : '⚡ Modern Tech'}`, 'info');
+  showPage('shop');
+  filterProducts(catId, null, 'shop-grid');
+}
+
+// ── PAGE ROUTING ──
+function showPage(page) {
+  document.querySelectorAll('[id^="page-"]').forEach(p => p.classList.add('hidden'));
+  const target = document.getElementById(`page-${page}`);
+  if (target) {
+    target.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  currentPage = page;
+
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  if (page === 'home') document.querySelectorAll('.nav-link')[0]?.classList.add('active');
+
+  if (page === 'shop') initShopGrid();
+  if (page === 'wishlist') updateWishlistPage();
+  if (page === 'checkout') renderCheckout();
+}
+
+// ── PRODUCT RENDERING ──
+function renderStars(rating) {
+  let html = '<div class="stars">';
+  for (let i = 1; i <= 5; i++) {
+    html += `<span class="star ${i <= Math.round(rating) ? 'filled' : 'empty'}">★</span>`;
+  }
+  return html + '</div>';
+}
+
+function getBadgeClass(color) {
+  const map = { blue:'blue', orange:'orange', green:'green', purple:'purple', neon:'neon', gold:'gold', red:'red' };
+  return map[color] || 'blue';
+}
+
+function renderProductCard(p, idx = 0) {
+  const save = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : 0;
+  const isWished = wishlist.includes(p.id);
+  const stockClass = p.stock < 10 ? 'low' : '';
+
+  return `
+  <div class="product-card reveal stagger-${(idx%6)+1}" onclick="openModal(${p.id})" style="cursor:pointer">
+    <div class="product-img-wrap">
+      <div class="pixel-corner pixel-corner--tl"></div>
+      <div class="pixel-corner pixel-corner--br"></div>
+      ${p.badge ? `<div class="product-badge"><span class="badge badge--${getBadgeClass(p.badgeColor)}">${p.badge}</span></div>` : ''}
+      <button class="product-wishlist ${isWished?'active':''}" onclick="event.stopPropagation();toggleWishlist(${p.id})" title="أضف للمفضلة">
+        ${isWished ? '♥' : '♡'}
+      </button>
+      <span class="product-img-emoji">${p.emoji}</span>
+    </div>
+    <div class="product-info">
+      <div class="product-category">${p.category === 'old-tech' ? '🕹️ OLD TECH' : '⚡ MODERN'}</div>
+      <div class="product-name">${p.nameShort || p.name}</div>
+      <div class="product-rating">
+        ${renderStars(p.rating)}
+        <span class="rating-count">(${p.reviews?.toLocaleString('ar-EG') || 0})</span>
+      </div>
+      <div class="product-pricing">
+        <span class="product-price">${p.price.toLocaleString('ar-EG')} ج.م</span>
+        ${p.oldPrice ? `<span class="product-old-price">${p.oldPrice.toLocaleString('ar-EG')}</span>` : ''}
+        ${save > 0 ? `<span class="product-save">-${save}%</span>` : ''}
+      </div>
+      <div class="product-cta">
+        <button class="btn btn-primary btn-sm" style="flex:1" onclick="event.stopPropagation();addToCart(${p.id})">
+          + السلة
+        </button>
+        <button class="btn btn-ghost btn-sm btn-icon" onclick="event.stopPropagation();toggleWishlist(${p.id})" title="مفضلة">
+          ${isWished ? '♥' : '♡'}
+        </button>
+      </div>
+      ${p.stock < 10 ? `<div class="product-stock low">⚠️ بقي ${p.stock} قطع فقط</div>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderFeaturedProducts() {
+  const grid = document.getElementById('featured-grid');
+  if (!grid) return;
+  const featured = PRODUCTS.filter(p => p.featured).slice(0, 8);
+  grid.innerHTML = featured.map((p, i) => renderProductCard(p, i)).join('');
+  initScrollReveal();
+}
+
+function renderBestsellers() {
+  const grid = document.getElementById('bestsellers-grid');
+  if (!grid) return;
+  const bs = PRODUCTS.filter(p => p.bestseller).slice(0, 3);
+  grid.innerHTML = bs.map((p, i) => renderProductCard(p, i)).join('');
+  initScrollReveal();
+}
+
+function initShopGrid() {
+  const grid = document.getElementById('shop-grid');
+  if (!grid) return;
+  grid.innerHTML = PRODUCTS.map((p, i) => renderProductCard(p, i)).join('');
+  initScrollReveal();
+}
+
+// ── FILTERING ──
+function filterProducts(type, btn, gridId = 'featured-grid') {
+  if (btn) {
+    btn.closest('.filter-bar')?.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+
+  let filtered = PRODUCTS;
+  if (type === 'all') filtered = PRODUCTS;
+  else if (type === 'bestseller') filtered = PRODUCTS.filter(p => p.bestseller);
+  else if (type === 'new') filtered = PRODUCTS.filter(p => p.new);
+  else filtered = PRODUCTS.filter(p => p.category === type);
+
+  grid.innerHTML = filtered.map((p, i) => renderProductCard(p, i)).join('');
+  initScrollReveal();
+}
+
+function handleSearch(val, gridId = 'shop-grid') {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  const lower = val.toLowerCase();
+  const filtered = PRODUCTS.filter(p =>
+    p.name.includes(val) || p.nameShort?.includes(val) ||
+    p.desc?.includes(val) || p.name.toLowerCase().includes(lower)
+  );
+  grid.innerHTML = filtered.length
+    ? filtered.map((p, i) => renderProductCard(p, i)).join('')
+    : '<div style="grid-column:1/-1;text-align:center;padding:4rem;color:var(--z-text-muted)"><span style="font-size:3rem;display:block;margin-bottom:1rem">🔍</span><p>مش لاقيين نتائج. جرب كلمة تانية.</p></div>';
+  initScrollReveal();
+}
+
+// ── PRODUCT MODAL ──
+function openModal(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  const save = p.oldPrice ? Math.round((1 - p.price/p.oldPrice)*100) : 0;
+
+  document.getElementById('product-modal').innerHTML = `
+    <div class="modal-inner" style="position:relative">
+      <button class="modal-close" onclick="closeModal(null,true)">✕</button>
+      <div class="modal-img-side">${p.emoji}</div>
+      <div class="modal-info-side">
+        <div class="modal-cat">${p.category === 'old-tech' ? '🕹️ OLD TECH COLLECTION' : '⚡ MODERN TECH'}</div>
+        <div class="modal-name">${p.name}</div>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
+          ${renderStars(p.rating)}
+          <span style="font-size:0.78rem;color:var(--z-text-muted)">(${p.reviews?.toLocaleString() || 0} تقييم)</span>
+          ${p.limitedEdition ? '<span class="badge badge--purple">Limited Edition</span>' : ''}
+        </div>
+        <p class="modal-desc">${p.desc}</p>
+        ${p.features ? `
+        <ul class="modal-features">
+          ${p.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>` : ''}
+        <div class="modal-pricing">
+          <div class="modal-price">${p.price.toLocaleString('ar-EG')} ج.م</div>
+          ${p.oldPrice ? `<div class="modal-old-price">${p.oldPrice.toLocaleString('ar-EG')} ج.م</div>` : ''}
+          ${save > 0 ? `<span class="badge badge--red">وفر ${save}%</span>` : ''}
+        </div>
+        ${p.stock < 10 ? `<div style="font-family:var(--font-mono);font-size:0.75rem;color:#F59E0B;margin-bottom:1rem">⚠️ بقي ${p.stock} قطع فقط!</div>` : ''}
+        <div class="modal-actions">
+          <button class="btn btn-primary btn-lg" onclick="addToCart(${p.id});closeModal(null,true)" style="flex:1">
+            🛒 أضف للسلة
+          </button>
+          <a href="https://wa.me/201000000000?text=عايز%20أطلب%20${encodeURIComponent(p.name)}" class="btn btn-whatsapp" target="_blank">
+            💬 واتساب
+          </a>
+        </div>
+        <div class="modal-trust">
+          <div class="modal-trust-item">✅ دفع عند الاستلام</div>
+          <div class="modal-trust-item">🔒 ضمان 6 شهور</div>
+          <div class="modal-trust-item">↩️ استرجاع 7 أيام</div>
+          <div class="modal-trust-item">🚀 توصيل 2-4 أيام</div>
+        </div>
+      </div>
+    </div>`;
+
+  document.getElementById('product-modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e, force = false) {
+  if (force || (e && e.target === document.getElementById('product-modal-overlay'))) {
+    document.getElementById('product-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+// ── CART ──
+function addToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+
+  const existing = cart.find(x => x.id === id);
+  if (existing) { existing.qty++; }
+  else { cart.push({ id: p.id, name: p.nameShort || p.name, price: p.price, emoji: p.emoji, qty: 1 }); }
+
+  localStorage.setItem('zaptix_cart', JSON.stringify(cart));
+  updateCartUI();
+  openCart();
+  showToast(`تم إضافة ${p.nameShort || p.name} للسلة ✅`, 'success');
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(x => x.id !== id);
+  localStorage.setItem('zaptix_cart', JSON.stringify(cart));
+  updateCartUI();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(x => x.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+  localStorage.setItem('zaptix_cart', JSON.stringify(cart));
+  updateCartUI();
+}
+
+function getCartTotal() {
+  return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+}
+
+function updateCartUI() {
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+  document.getElementById('cart-count').textContent = count;
+
+  const body = document.getElementById('cart-body');
+  const foot = document.getElementById('cart-foot');
+  const empty = document.getElementById('cart-empty');
+
+  if (!cart.length) {
+    if (empty) empty.style.display = 'block';
+    if (foot) foot.style.display = 'none';
+    return;
+  }
+
+  if (empty) empty.style.display = 'none';
+  if (foot) foot.style.display = 'block';
+
+  // Render cart items
+  body.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img">${item.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${(item.price * item.qty).toLocaleString('ar-EG')} ج.م</div>
+      </div>
+      <div class="cart-qty">
+        <button class="cart-qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+        <span class="cart-qty-val">${item.qty}</span>
+        <button class="cart-qty-btn" onclick="changeQty(${item.id},1)">+</button>
+      </div>
+      <span class="cart-item-remove" onclick="removeFromCart(${item.id})">🗑</span>
+    </div>`).join('');
+
+  const total = getCartTotal();
+  const subtotalEl = document.getElementById('cart-subtotal-val');
+  const totalEl = document.getElementById('cart-total-val');
+  if (subtotalEl) subtotalEl.textContent = total.toLocaleString('ar-EG') + ' ج.م';
+  if (totalEl) totalEl.textContent = total.toLocaleString('ar-EG') + ' ج.م';
+}
+
+function openCart() {
+  document.getElementById('cart-overlay').classList.add('open');
+  document.getElementById('cart-sidebar').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('open');
+  document.getElementById('cart-sidebar').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── WISHLIST ──
+function toggleWishlist(id) {
+  const idx = wishlist.indexOf(id);
+  const p = PRODUCTS.find(x => x.id === id);
+
+  if (idx >= 0) {
+    wishlist.splice(idx, 1);
+    showToast(`تمت إزالة ${p?.nameShort} من المفضلة`, 'info');
+  } else {
+    wishlist.push(id);
+    showToast(`تمت إضافة ${p?.nameShort} للمفضلة ♥`, 'success');
+  }
+
+  localStorage.setItem('zaptix_wishlist', JSON.stringify(wishlist));
+  updateWishlistPage();
+
+  // Refresh visible grids
+  if (currentPage === 'home') renderFeaturedProducts();
+  if (currentPage === 'shop') initShopGrid();
+}
+
+function toggleWishlistPanel() { showPage('wishlist'); }
+
+function updateWishlistPage() {
+  const grid = document.getElementById('wishlist-grid');
+  const empty = document.getElementById('wishlist-empty');
+  if (!grid) return;
+
+  const items = PRODUCTS.filter(p => wishlist.includes(p.id));
+  if (!items.length) {
+    grid.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+  } else {
+    if (empty) empty.style.display = 'none';
+    grid.innerHTML = items.map((p, i) => renderProductCard(p, i)).join('');
+    initScrollReveal();
+  }
+}
+
+// ── CHECKOUT ──
+function renderCheckout() {
+  const itemsEl = document.getElementById('checkout-items');
+  const subtotalEl = document.getElementById('co-subtotal');
+  const totalEl = document.getElementById('co-total');
+
+  if (!itemsEl) return;
+  const total = getCartTotal();
+  const finalTotal = Math.round(total * (1 - discountPercent/100));
+
+  itemsEl.innerHTML = cart.length ? cart.map(item => `
+    <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--z-border)">
+      <span style="font-size:1.5rem">${item.emoji}</span>
+      <div style="flex:1">
+        <div style="font-size:0.85rem;font-weight:600">${item.name}</div>
+        <div style="font-size:0.78rem;color:var(--z-text-muted)">x${item.qty}</div>
+      </div>
+      <div style="font-family:var(--font-display);font-size:0.9rem;color:var(--cat-primary)">${(item.price*item.qty).toLocaleString('ar-EG')} ج.م</div>
+    </div>`).join('')
+    : '<p style="color:var(--z-text-muted);text-align:center;padding:1rem">السلة فاضية</p>';
+
+  if (subtotalEl) subtotalEl.textContent = total.toLocaleString('ar-EG') + ' ج.م';
+  if (totalEl) totalEl.textContent = finalTotal.toLocaleString('ar-EG') + ' ج.م';
+}
+
+function applyDiscount() {
+  const code = document.getElementById('co-discount')?.value?.trim().toUpperCase();
+  const codes = { 'ZAPTIX15': 15, 'WELCOME10': 10, 'STUDENT20': 20, 'VIP25': 25 };
+  const msgEl = document.getElementById('discount-msg');
+
+  if (codes[code]) {
+    discountPercent = codes[code];
+    if (msgEl) {
+      msgEl.style.display = 'block';
+      msgEl.style.color = '#39FF14';
+      msgEl.textContent = `✅ تم تفعيل خصم ${discountPercent}%!`;
+    }
+    showToast(`خصم ${discountPercent}% تم تطبيقه! 🎉`, 'success');
+    renderCheckout();
+  } else {
+    if (msgEl) {
+      msgEl.style.display = 'block';
+      msgEl.style.color = '#EF4444';
+      msgEl.textContent = '❌ كود الخصم غير صحيح';
+    }
+  }
+}
+
+function placeOrder() {
+  const fname = document.getElementById('co-fname')?.value;
+  const lname = document.getElementById('co-lname')?.value;
+  const phone = document.getElementById('co-phone')?.value;
+  const gov = document.getElementById('co-gov')?.value;
+  const address = document.getElementById('co-address')?.value;
+
+  if (!fname || !lname || !phone || !gov || !address) {
+    showToast('من فضلك اكمل بيانات الشحن ⚠️', 'error');
+    return;
+  }
+  if (!phone.match(/^01[0-9]{9}$/)) {
+    showToast('رقم التليفون غير صحيح ⚠️', 'error');
+    return;
+  }
+  if (!cart.length) {
+    showToast('السلة فاضية! أضف منتجات أول ⚠️', 'error');
+    return;
+  }
+
+  const orderNum = '#' + Math.random().toString(36).substr(2, 6).toUpperCase();
+  document.getElementById('order-num').textContent = orderNum;
+
+  // Clear cart
+  cart = [];
+  localStorage.setItem('zaptix_cart', JSON.stringify(cart));
+  updateCartUI();
+  discountPercent = 0;
+
+  showPage('success');
+  showToast('🎉 تم الطلب بنجاح! هنتواصل معاك قريباً', 'success');
+}
+
+// ── REVIEWS ──
+function renderReviews() {
+  const grid = document.getElementById('reviews-grid');
+  if (!grid) return;
+  grid.innerHTML = REVIEWS_DATA.map((r, i) => `
+    <div class="review-card reveal stagger-${(i%3)+1}">
+      <div class="review-header">
+        <div class="reviewer-avatar">${r.avatar}</div>
+        <div>
+          <div class="reviewer-name">${r.name}</div>
+          <div class="reviewer-location">📍 ${r.location}</div>
+        </div>
+        <div style="margin-right:auto">${renderStars(r.rating)}</div>
+      </div>
+      <p class="review-text">"${r.text}"</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem">
+        <div class="review-product">🛍️ ${r.product}</div>
+        ${r.verified ? '<div class="verified-badge">✅ مشتري موثق</div>' : ''}
+      </div>
+    </div>`).join('');
+}
+
+// ── FAQ ──
+function renderFAQ() {
+  const list = document.getElementById('faq-list');
+  if (!list) return;
+  list.innerHTML = FAQS.map((f, i) => `
+    <div class="faq-item" id="faq-${i}">
+      <div class="faq-question" onclick="toggleFAQ(${i})">
+        <span>${f.q}</span>
+        <span class="faq-chevron">▾</span>
+      </div>
+      <div class="faq-answer">${f.a}</div>
+    </div>`).join('');
+}
+
+function toggleFAQ(i) {
+  const item = document.getElementById(`faq-${i}`);
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── TOAST ──
+function showToast(msg, type = 'info', sub = '') {
+  const container = document.getElementById('toast-container');
+  const icons = { success: '✅', error: '❌', info: '💡' };
+  const toast = document.createElement('div');
+  toast.className = `toast toast--${type}`;
+  toast.innerHTML = `
+    <div class="toast-icon">${icons[type] || '💡'}</div>
+    <div class="toast-left">
+      <div class="toast-title">${msg}</div>
+      ${sub ? `<div class="toast-sub">${sub}</div>` : ''}
+    </div>`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.add('removing');
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+}
+
+// ── COUNTDOWN ──
+function initCountdown() {
+  let target = new Date();
+  target.setHours(target.getHours() + 5, target.getMinutes() + 47, target.getSeconds() + 33, 0);
+
+  function tick() {
+    const diff = target - new Date();
+    if (diff <= 0) { target = new Date(); target.setHours(target.getHours() + 8); return; }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const hEl = document.getElementById('cd-h');
+    const mEl = document.getElementById('cd-m');
+    const sEl = document.getElementById('cd-s');
+    if (hEl) hEl.textContent = String(h).padStart(2,'0');
+    if (mEl) mEl.textContent = String(m).padStart(2,'0');
+    if (sEl) sEl.textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+// ── SCROLL REVEAL ──
+function initScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+}
+
+// ── NAV SCROLL ──
+function initNavScroll() {
+  const nav = document.getElementById('nav');
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+    backTop.classList.toggle('show', window.scrollY > 300);
+  });
+}
+
+// ── CATEGORY DROPDOWN ──
+function initCategoryDropdown() {
+  const trigger = document.getElementById('cat-trigger');
+  const dropdown = document.getElementById('cat-dropdown');
+  if (!trigger || !dropdown) return;
+
+  trigger.addEventListener('mouseenter', () => dropdown.classList.add('open'));
+  trigger.addEventListener('mouseleave', () => setTimeout(() => {
+    if (!dropdown.matches(':hover')) dropdown.classList.remove('open');
+  }, 150));
+  dropdown.addEventListener('mouseleave', () => dropdown.classList.remove('open'));
+}
+
+// ── MOBILE MENU ──
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+
+// ── EXIT INTENT ──
+function initExitIntent() {
+  let shown = false;
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 50 && !shown && !localStorage.getItem('zaptix_exit_shown')) {
+      shown = true;
+      exitShown = true;
+      setTimeout(() => {
+        document.getElementById('exit-popup').classList.add('show');
+        localStorage.setItem('zaptix_exit_shown', '1');
+      }, 300);
+    }
+  });
+  // Also show after 30 seconds
+  setTimeout(() => {
+    if (!shown && !exitShown && !localStorage.getItem('zaptix_exit_shown')) {
+      shown = true;
+      document.getElementById('exit-popup').classList.add('show');
+      localStorage.setItem('zaptix_exit_shown', '1');
+    }
+  }, 30000);
+}
+
+function copyExitCode() {
+  navigator.clipboard.writeText('ZAPTIX15').then(() => showToast('تم نسخ الكود! ✅', 'success'));
+}
+
+// ── TRACK ORDER ──
+function trackOrder() {
+  const val = document.getElementById('track-input')?.value?.trim();
+  const result = document.getElementById('track-result');
+  if (!val || !result) return;
+
+  result.style.display = 'block';
+  result.innerHTML = `
+    <div style="background:rgba(0,102,255,0.08);border:1px solid var(--cat-border);border-radius:var(--r-md);padding:1.25rem;text-align:right">
+      <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--cat-primary);margin-bottom:0.75rem">ORDER_STATUS // ${val.toUpperCase()}</div>
+      <div style="display:flex;flex-direction:column;gap:0.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem"><span style="color:#39FF14">✅</span><div><div style="font-size:0.85rem;font-weight:600">تم تأكيد الطلب</div><div style="font-size:0.75rem;color:var(--z-text-muted)">تم استلام طلبك وجاري التحضير</div></div></div>
+        <div style="display:flex;align-items:center;gap:0.75rem"><span style="color:#F59E0B">📦</span><div><div style="font-size:0.85rem;font-weight:600">جاري التحضير</div><div style="font-size:0.75rem;color:var(--z-text-muted)">طلبك في التعبئة والتغليف</div></div></div>
+        <div style="display:flex;align-items:center;gap:0.75rem;opacity:0.4"><span>🚚</span><div><div style="font-size:0.85rem;font-weight:600">في الطريق إليك</div><div style="font-size:0.75rem;color:var(--z-text-muted)">قريباً</div></div></div>
+      </div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--z-border)">
+        <a href="https://wa.me/201000000000?text=عايز%20أتابع%20الطلب%20رقم%20${val}" class="btn btn-whatsapp btn-sm btn-full" target="_blank">💬 استفسر واتساب</a>
+      </div>
+    </div>`;
+}
+
+// ── KEYBOARD SHORTCUTS ──
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal(null, true);
+    closeCart();
+    document.getElementById('exit-popup').classList.remove('show');
+    const mm = document.getElementById('mobile-menu');
+    if (mm.classList.contains('open')) toggleMobileMenu();
+  }
+});
+
+// ── CATEGORY CARDS (click on homepage) ──
+document.querySelectorAll('.cat-card:not(.cat-soon)').forEach(card => {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// ── INITIAL REVEAL ──
+setTimeout(initScrollReveal, 200);
+</script>
+
+</body>
+</html>
